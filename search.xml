@@ -1,6 +1,340 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>选择在Linux下安装redis</title>
+    <url>/2019/11/28/%E9%80%89%E6%8B%A9%E5%9C%A8Linux%E4%B8%8B%E5%AE%89%E8%A3%85redis/</url>
+    <content><![CDATA[<p>选择在Linux下安装redis，</p>
+<p>1.安装gcc  redis是c语言编写的</p>
+<pre><code>yum install gcc-c++</code></pre><p>2.下载redis安装包,在root目录下执行</p>
+<pre><code>wget http://download.redis.io/releases/redis-5.0.4.tar.gz</code></pre><p>3.解压redis安装包</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxvf redis-5.0.4.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>4.进入redis目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd redis-5.0.4</span><br></pre></td></tr></table></figure>
+
+<p>5.编译</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>6.安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make PREFIX=/usr/local/redis install</span><br></pre></td></tr></table></figure>
+
+<p>7.拷贝redis.conf到安装目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp redis.conf /usr/local/redis</span><br></pre></td></tr></table></figure>
+
+<p>8.进入 /usr/local/redis目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /usr/local/redis/</span><br></pre></td></tr></table></figure>
+
+<p>9.编辑redis.conf   </p>
+<pre><code>vim redis.conf
+
+1.后台启动，daemonize yes
+
+2.绑定端口，port 6379 默认是6379 需要安全组开放端口
+
+3.绑定IP，bind 127.0.0.1:默认的
+
+4.指定数据存放路径，dir /usr/local/redis/log存放的路径
+
+5.指定持久化方式，appendonly yes
+
+6.requirepass redis129 设置密码</code></pre><p> 10.后端启动redis：</p>
+<pre><code>./bin/redis-server ./redis.conf</code></pre><p>11.查看是否启动成功：</p>
+<pre><code>ps aux | grep redis</code></pre><p>12.杀死redis并重新启动redis:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkill -9 redis-server</span><br><span class="line">./bin/redis-server ./redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>13.检测是否开启</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps axu | grep redis-server</span><br></pre></td></tr></table></figure>
+
+<p>14.客户端远程通过ip连接redis</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bin/redis-cli -h 127.0.0.1 -p 6379</span><br></pre></td></tr></table></figure>
+
+<p>如果出现如下，就是代表连接成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>在阿里云Centos云服务器上部署mysql数据库</title>
+    <url>/2019/11/28/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91Centos%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<h1 id="在阿里云Centos云服务器上部署mysql数据库"><a href="#在阿里云Centos云服务器上部署mysql数据库" class="headerlink" title="在阿里云Centos云服务器上部署mysql数据库"></a>在阿里云Centos云服务器上部署mysql数据库</h1><blockquote>
+<p>首先查看centos7上有没有安装过mysql ,一定要卸载干净残留，不然会安装或启动失败。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum list installed mysql*</span><br><span class="line">列出后如果有就删除</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>删除mysql</em></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo yum remove mysql-community-*</span><br><span class="line">rm -rf /var/lib/mysql</span><br><span class="line">rm /etc/my.cnf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>安装yum源</em></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br><span class="line">sudo yum instal   mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>查看是否安装成功</em></li>
+</ul>
+<p><code>sudo yum repolist all|grep mysql</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2067965-8277cf35d4e8c628.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/688/format/webp" alt="img"></p>
+<p>成功安装</p>
+<ul>
+<li><em>配置要安装的mysql版本</em></li>
+</ul>
+<p><code>sudo vim /etc/yum.repos.d/mysql-community.repo</code></p>
+<p><strong>enabled 为1表示启用，将要安装的版本的enabled改为1后保存</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2067965-c7fedc62b2bab299.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/657/format/webp" alt="img"></p>
+<p>配置repo</p>
+<ul>
+<li><em>安装启动mysql</em><br><code>sudo yum install mysql-community-server.x86_64</code></li>
+</ul>
+<p><em>等待安装好后启动mysql</em></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo service mysqld start      //启动mysql</span><br><span class="line">sudo service mysqld status   //查看mysql状态</span><br><span class="line">sudo systemctl enable mysqld //配置开机启动</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>管理账户</em></li>
+</ul>
+<p><em>mysql安装完成之后，在/var/log/mysqld.log文件中给root生成了一个默认密码。通过下面的方式找到root默认密码，然后登录mysql进行修改：</em></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grep &apos;temporary password&apos; /var/log/mysqld.log  //找到默认密码</span><br><span class="line">mysql -uroot -p </span><br><span class="line">set password for &apos;root&apos;@&apos;localhost&apos;=password(&apos;NEWPASSWORD&apos;); 或者ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;NEWPASSWORD&apos;;  // 修改密码,注意密码要复杂一些，否则会不能通过。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>添加远程用户</em></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;username&apos;@&apos;%&apos; IDENTIFIED BY &apos;password&apos; WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>查看并修改编码</em></li>
+</ul>
+<p><code>mysql -u root -p</code><br><code>show variables like &#39;%char%;</code><br>看到有的编码不是 <code>utf8</code><br><em>更改配置文件</em><br><code>vim /etc/my.cnf</code><br><em>在[mysqld]下面添加以下两句</em></p>
+<p><code>character_set_server=utf8</code><br><code>collation-server=utf8_general_ci</code><br><em>在[client]下面添加</em><br><code>default-character-set=utf8</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2067965-d4e266a5524f9690.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/427/format/webp" alt="img"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2067965-c386fc983b323d5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/715/format/webp" alt="img"></p>
+<p>修改成功</p>
+<p><strong>注意修改后只会对以后创建的数据库生效。</strong></p>
+<p>然后登陆阿里云配置安全组</p>
+<ul>
+<li><p>通过实例列表选中服务器后，进入实例详情页面</p>
+</li>
+<li><p>在左侧点击<strong>本实例安全组</strong></p>
+</li>
+<li><p>在安全组列表里选中你的服务器实例</p>
+</li>
+<li><p>页面默认会在<strong>安全组规则</strong>分页中</p>
+<p>​</p>
+</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g9ahndkb6dj31hc0eldh8.jpg" alt="微信截图_20191125185914.png"></p>
+<p>如图所示</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g9ahoa3tt8j30gm0ifgm2.jpg" alt="微信截图_20191125190055.png">)<img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g9ahohopf7j31au09v74u.jpg" alt="微信截图_20191125190121.png">)<img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g9ahonlotjj31au09a0t2.jpg" alt="微信截图_20191125190133.png"></p>
+<p>这样配置应该就会成功了</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>微信小程序-注册整体过程</title>
+    <url>/2019/11/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B3%A8%E5%86%8C%E6%95%B4%E4%BD%93%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="微信小程序-注册整体过程"><a href="#微信小程序-注册整体过程" class="headerlink" title="微信小程序-注册整体过程"></a>微信小程序-注册整体过程</h1><h2 id="reg-wxml"><a href="#reg-wxml" class="headerlink" title="reg.wxml"></a>reg.wxml</h2><p><img src="/2019/11/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B3%A8%E5%86%8C%E6%95%B4%E4%BD%93%E8%BF%87%E7%A8%8B/C:%5CUsers%5Cshun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1574651962596.png" alt="1574651962596"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view&gt;</span><br><span class="line">  &lt;view class=&quot;row&quot;&gt;</span><br><span class="line">  # &lt;input class=&quot;info-input&quot; placeholder=&quot;请输入用户名&quot; bindinput=&quot;name&quot;&gt;&lt;/input&gt;</span><br><span class="line">    &lt;input class=&quot;info-input&quot; placeholder=&quot;请输入用户名&quot; bindchange=&quot;name&quot;&gt;&lt;/input&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">  &lt;view class=&apos;row&apos;&gt;</span><br><span class="line">    &lt;view class=&apos;info&apos;&gt;</span><br><span class="line">   #&lt;input class=&quot;info-input&quot; type=&quot;password&quot; placeholder=&quot;请输入密码&quot; bindinput=&quot;password&quot;&gt;&lt;/input&gt;</span><br><span class="line">    &lt;input class=&quot;info-input&quot; type=&quot;password&quot; placeholder=&quot;请输入密码&quot; bindchange=&quot;password&quot;&gt;&lt;/input&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">  &lt;button class=&quot;submit&quot; bindtap=&quot;reg&quot;&gt;注册&lt;/button&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="reg-js"><a href="#reg-js" class="headerlink" title="reg.js"></a>reg.js</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// miniprogram/pages/reg/reg.js</span><br><span class="line">Page(&#123;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * 页面的初始数据</span><br><span class="line">   */</span><br><span class="line">  data: &#123;</span><br><span class="line">    name: &apos;&apos;,</span><br><span class="line">    password: &apos;&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  //获取用户输入的用户名</span><br><span class="line">  name: function (n) &#123;</span><br><span class="line">    // debugger</span><br><span class="line">    var content = n.detail.value</span><br><span class="line">    this.setData(&#123;  </span><br><span class="line">      name: content,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line"> //获取用户输入的密码</span><br><span class="line">  password: function (e) &#123;</span><br><span class="line">    var pwd = e.detail.value;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      password: pwd,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  # 绑定的点击事件</span><br><span class="line">  reg: function () &#123;</span><br><span class="line">    // debugger</span><br><span class="line">    console.log(this.data)</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      url: &apos;http://127.0.0.1:8000/app/reg/&apos;,</span><br><span class="line">      method: &apos;post&apos;,</span><br><span class="line">      data: &#123;</span><br><span class="line">        &apos;name&apos;: this.data.name,</span><br><span class="line">        &apos;password&apos;: this.data.password</span><br><span class="line">      &#125;,</span><br><span class="line">      header: &#123;</span><br><span class="line">        // &apos;content-type&apos;: &apos;application/json&apos;    //get 方式</span><br><span class="line">        &apos;content-type&apos;: &apos;application/x-www-form-urlencoded&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">      success: function (res) &#123;</span><br><span class="line">        if(res.data.code==200)&#123;</span><br><span class="line">          console.log(res)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          console.log(res)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Django后台接口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#注册</span><br><span class="line">class reg(APIView):</span><br><span class="line">    def post(self,request):</span><br><span class="line">    	# 获取用户名 密码</span><br><span class="line">        name=request.data[&quot;name&quot;]</span><br><span class="line">        password=request.data[&quot;password&quot;]</span><br><span class="line">        if not all([name,password]):</span><br><span class="line">            return Response(&#123;</span><br><span class="line">                &quot;code&quot;:201,</span><br><span class="line">                &quot;message&quot;:&quot;请输入完整&quot;</span><br><span class="line">            &#125;)</span><br><span class="line">        # 判断数据库的账号是否存在</span><br><span class="line">        user=User.objects.filter(name=name).first()</span><br><span class="line">        if user:</span><br><span class="line">            return Response(&#123;</span><br><span class="line">                &quot;code&quot;: 202,</span><br><span class="line">                &quot;message&quot;: &quot;账号已存在&quot;</span><br><span class="line">            &#125;)</span><br><span class="line">        else:</span><br><span class="line">        	#  否则添加到数据库</span><br><span class="line">            User.objects.create(name=name,password=password)</span><br><span class="line">            return Response(&#123;</span><br><span class="line">                &quot;code&quot;: 200,</span><br><span class="line">                &quot;message&quot;: &quot;注册成功&quot;</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>微信小程序获取用户信息以及用户的openid</title>
+    <url>/2019/11/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E4%BB%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E7%9A%84openid/</url>
+    <content><![CDATA[<h1 id="微信小程序获取用户信息以及用户的openid"><a href="#微信小程序获取用户信息以及用户的openid" class="headerlink" title="微信小程序获取用户信息以及用户的openid"></a>微信小程序获取用户信息以及用户的openid</h1><ul>
+<li><p>在微信开发者工具新创建一个项目时，新项目的示例中已有如何获取用户基本信息的例子，此处不再赘述</p>
+</li>
+<li><p>重点是用户openid的获取</p>
+<ul>
+<li><p>首先，这里需要两个参数，这个小程序的appId，以及在微信公众平台生成的本小程序的appsecret码，这里需要先登录微信公众平台的小程序模块</p>
+<p>（1）<img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g96k9bwmdqj31em0ifdh5.jpg" alt="第一步.png"></p>
+<p>（2）<img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g96kasve3cj31420cdq3i.jpg" alt="第二部.png"></p>
+<p>（3）</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g96kb4pf1tj30ny0czglx.jpg" alt="第三部.png"></p>
+</li>
+<li><p>之后再微信开发者工具中，对调用的方法进行编辑，这里要用到微信官网API中的wx.login函数</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g96kef8tbtj30cg0bm74f.jpg" alt="第五步.png"></p>
+<p>① 首先自定义一个函数，如我上图定义的getOpenId，在函数中调用wx.login方法，这个方法不需要传递参数，直接可以得到返回值，所以下一步直接通过success获得返回值，这个返回值返回的有一部分是用户登录后的一个密钥，如果要获取用户的openid会用到</p>
+<p>②在success中再次调用微信的一个方法wx.request，这个方法几乎等同于ajax和axios，传递的参数也是一样的，如图，将wx.login获取到的code值，小程序的appid和appsecret都作为参数传递到后台自己定义的接口中</p>
+<p>③后台接口如下图：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g96kvttho2j30rp0fa760.jpg" alt="第六步.png"></p>
+<p>这里将这个url贴过来</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">url = r&quot;https://api.weixin.qq.com/sns/jscode2session?appid=%s&amp;secret=%s&amp;js_code=%s&amp;grant_type=authorization_code&quot; % (appid, secret, code)</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意的是要用到requests库来发送请求</p>
+<p>④一切顺利的话返回的数据是这样的，也就是得到了用户的openid，而那个session_key则是用来判断用户登陆状态的，之后会另写一个文档介绍这个</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g96l8psu02j30hx0210sn.jpg" alt="第七部.png"></p>
+<p>如果返回的不是这样的，那就是出问题了，原因可能有两种：</p>
+<p>​    ⑴ wx.login返回的code值被多次调用了：</p>
+<p>​        具体还不知道是哪里有问题，这样的报错可以自行百度</p>
+<p>​    ⑵ appid或者appsecret有误：</p>
+<p>​        这样的报错极有可能是在创建新项目的时候appid被替换了，需要给这个项目替换上微信公众平台上的appid，并重置一个appsecret再来试试</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>生成随机字符串</title>
+    <url>/2019/11/28/%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h3 id="生成随机字符串"><a href="#生成随机字符串" class="headerlink" title="生成随机字符串"></a>生成随机字符串</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法一</span></span><br><span class="line">tmp = os.urandom(<span class="number">44</span>)</span><br><span class="line">secret_key = base64.b64encode(tmp)</span><br><span class="line">print(secret_key)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_random_secret_key</span><span class="params">(length=<span class="number">12</span>, allowed_chars=None, secret_key=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    生成随机字符串</span></span><br><span class="line"><span class="string">    :param length: 随机字符串长度</span></span><br><span class="line"><span class="string">    :param allowed_chars: 随机字符串字符取值范围</span></span><br><span class="line"><span class="string">    :param secret_key: 生成随机字符串的随机字符串</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> secret_key <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        secret_key = <span class="string">"n&amp;^-9#k*-6pwzsjt-qsc@s3$l46k(7e%f80e7gx^f#vouf3yvz"</span></span><br><span class="line">    <span class="keyword">if</span> allowed_chars <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        allowed_chars = <span class="string">'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)'</span></span><br><span class="line"></span><br><span class="line">    random.seed(</span><br><span class="line">        hashlib.sha256(</span><br><span class="line">            (<span class="string">"%s%s%s"</span> % (</span><br><span class="line">                random.getstate(),</span><br><span class="line">                time.time(),</span><br><span class="line">                secret_key)).encode(<span class="string">'utf-8'</span>)</span><br><span class="line">        ).digest())</span><br><span class="line">    ret = <span class="string">''</span>.join(random.choice(allowed_chars) <span class="keyword">for</span> i <span class="keyword">in</span> range(length))</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>rabbitmq原理及基础概念</title>
+    <url>/2019/11/28/rabbitmq%E5%8E%9F%E7%90%86%E5%8F%8A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h3 id="RabbitMQ简介"><a href="#RabbitMQ简介" class="headerlink" title="RabbitMQ简介"></a>RabbitMQ简介</h3><p>AMQP，即Advanced Message Queuing Protocol，高级消息队列协议，是应用层协议的一个开放标准，为面向消息的<a href="http://www.diggerplus.org/archives/tag/%e4%b8%ad%e9%97%b4%e4%bb%b6" target="_blank" rel="noopener">中间件</a>设计。消息中间件主要用于组件之间的解耦，消息的发送者无需知道消息使用者的存在，反之亦然。<br>AMQP的主要特征是面向消息、队列、路由（包括点对点和发布/订阅）、可靠性、安全。<br>RabbitMQ是一个开源的AMQP实现，服务器端用Erlang语言编写，支持多种客户端，如：Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP、STOMP等，支持AJAX。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。<br>下面将重点介绍RabbitMQ中的一些基础概念，了解了这些概念，是使用好RabbitMQ的基础。</p>
+<h3 id="ConnectionFactory、Connection、Channel"><a href="#ConnectionFactory、Connection、Channel" class="headerlink" title="ConnectionFactory、Connection、Channel"></a>ConnectionFactory、Connection、Channel</h3><p>ConnectionFactory、Connection、Channel都是RabbitMQ对外提供的API中最基本的对象。Connection是RabbitMQ的socket链接，它封装了socket协议相关部分逻辑。ConnectionFactory为Connection的制造工厂。<br>Channel是我们与RabbitMQ打交道的最重要的一个接口，我们大部分的业务操作是在Channel这个接口中完成的，包括定义Queue、定义Exchange、绑定Queue与Exchange、发布消息等。</p>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p>Queue（队列）是RabbitMQ的内部对象，用于存储消息，用下图表示。<br><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819103814085-804287529.png" alt="img"></p>
+<p>RabbitMQ中的消息都只能存储在Queue中，生产者（下图中的P）生产消息并最终投递到Queue中，消费者（下图中的C）可以从Queue中获取消息并消费。</p>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819103830954-867723738.png" alt="img"></p>
+<p>多个消费者可以订阅同一个Queue，这时Queue中的消息会被平均分摊给多个消费者进行处理，而不是每个消费者都收到所有的消息并处理。</p>
+<h3 id="Message-acknowledgment"><a href="#Message-acknowledgment" class="headerlink" title="Message acknowledgment"></a>Message acknowledgment</h3><p>在实际应用中，可能会发生消费者收到Queue中的消息，但没有处理完成就宕机（或出现其他意外）的情况，这种情况下就可能会导致消息丢失。为了避免这种情况发生，我们可以要求消费者在消费完消息后发送一个回执给RabbitMQ，RabbitMQ收到消息回执（Message acknowledgment）后才将该消息从Queue中移除；如果RabbitMQ没有收到回执并检测到消费者的RabbitMQ连接断开，则RabbitMQ会将该消息发送给其他消费者（如果存在多个消费者）进行处理。这里不存在timeout概念，一个消费者处理消息时间再长也不会导致该消息被发送给其他消费者，除非它的RabbitMQ连接断开。<br>这里会产生另外一个问题，如果我们的开发人员在处理完业务逻辑后，忘记发送回执给RabbitMQ，这将会导致严重的bug——Queue中堆积的消息会越来越多；消费者重启后会重复消费这些消息并重复执行业务逻辑…</p>
+<h3 id="Message-durability"><a href="#Message-durability" class="headerlink" title="Message durability"></a>Message durability</h3><p>如果我们希望即使在RabbitMQ服务重启的情况下，也不会丢失消息，我们可以将Queue与Message都设置为可持久化的（durable），这样可以保证绝大部分情况下我们的RabbitMQ消息不会丢失。但依然解决不了小概率丢失事件的发生（比如RabbitMQ服务器已经接收到生产者的消息，但还没来得及持久化该消息时RabbitMQ服务器就断电了），如果我们需要对这种小概率事件也要管理起来，那么我们要用到事务。由于这里仅为RabbitMQ的简单介绍，所以这里将不讲解RabbitMQ相关的事务。</p>
+<h3 id="Prefetch-count"><a href="#Prefetch-count" class="headerlink" title="Prefetch count"></a>Prefetch count</h3><p>前面我们讲到如果有多个消费者同时订阅同一个Queue中的消息，Queue中的消息会被平摊给多个消费者。这时如果每个消息的处理时间不同，就有可能会导致某些消费者一直在忙，而另外一些消费者很快就处理完手头工作并一直空闲的情况。我们可以通过设置prefetchCount来限制Queue每次发送给每个消费者的消息数，比如我们设置prefetchCount=1，则Queue每次给每个消费者发送一条消息；消费者处理完这条消息后Queue会再给该消费者发送一条消息。</p>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104007647-1027286628.png" alt="img"></p>
+<h3 id="Exchange"><a href="#Exchange" class="headerlink" title="Exchange"></a>Exchange</h3><p>在上一节我们看到生产者将消息投递到Queue中，实际上这在RabbitMQ中这种事情永远都不会发生。实际的情况是，生产者将消息发送到Exchange（交换器，下图中的X），由Exchange将消息路由到一个或多个Queue中（或者丢弃）。</p>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104028789-412276700.png" alt="img"></p>
+<p>Exchange是按照什么逻辑将消息路由到Queue的？这个将在Binding一节介绍。<br>RabbitMQ中的Exchange有四种类型，不同的类型有着不同的路由策略，这将在Exchange Types一节介绍。</p>
+<h3 id="routing-key"><a href="#routing-key" class="headerlink" title="routing key"></a>routing key</h3><p>生产者在将消息发送给Exchange的时候，一般会指定一个routing key，来指定这个消息的路由规则，而这个routing key需要与Exchange Type及binding key联合使用才能最终生效。<br>在Exchange Type与binding key固定的情况下（在正常使用时一般这些内容都是固定配置好的），我们的生产者就可以在发送消息给Exchange时，通过指定routing key来决定消息流向哪里。<br>RabbitMQ为routing key设定的长度限制为255 bytes。</p>
+<h3 id="Binding"><a href="#Binding" class="headerlink" title="Binding"></a>Binding</h3><p>RabbitMQ中通过Binding将Exchange与Queue关联起来，这样RabbitMQ就知道如何正确地将消息路由到指定的Queue了。<br><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104128931-1338459538.png" alt="img"></p>
+<h3 id="Binding-key"><a href="#Binding-key" class="headerlink" title="Binding key"></a>Binding key</h3><p>在绑定（Binding）Exchange与Queue的同时，一般会指定一个binding key；消费者将消息发送给Exchange时，一般会指定一个routing key；当binding key与routing key相匹配时，消息将会被路由到对应的Queue中。这个将在Exchange Types章节会列举实际的例子加以说明。<br>在绑定多个Queue到同一个Exchange的时候，这些Binding允许使用相同的binding key。<br>binding key 并不是在所有情况下都生效，它依赖于Exchange Type，比如fanout类型的Exchange就会无视binding key，而是将消息路由到所有绑定到该Exchange的Queue。</p>
+<h3 id="Exchange-Types"><a href="#Exchange-Types" class="headerlink" title="Exchange Types"></a>Exchange Types</h3><p>RabbitMQ常用的Exchange Type有fanout、direct、topic、headers这四种（AMQP规范里还提到两种Exchange Type，分别为system与自定义，这里不予以描述），下面分别进行介绍。</p>
+<h3 id="fanout"><a href="#fanout" class="headerlink" title="fanout"></a>fanout</h3><p>fanout类型的Exchange路由规则非常简单，它会把所有发送到该Exchange的消息路由到所有与它绑定的Queue中。<br><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104152177-2053988251.png" alt="img"></p>
+<p>上图中，生产者（P）发送到Exchange（X）的所有消息都会路由到图中的两个Queue，并最终被两个消费者（C1与C2）消费。</p>
+<h3 id="direct"><a href="#direct" class="headerlink" title="direct"></a>direct</h3><p>direct类型的Exchange路由规则也很简单，它会把消息路由到那些binding key与routing key完全匹配的Queue中。</p>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104210818-1771762193.png" alt="img"></p>
+<p>以上图的配置为例，我们以routingKey=”error”发送消息到Exchange，则消息会路由到Queue1（amqp.gen-S9b…，这是由RabbitMQ自动生成的Queue名称）和Queue2（amqp.gen-Agl…）；如果我们以routingKey=”info”或routingKey=”warning”来发送消息，则消息只会路由到Queue2。如果我们以其他routingKey发送消息，则消息不会路由到这两个Queue中。</p>
+<h3 id="topic"><a href="#topic" class="headerlink" title="topic"></a>topic</h3><p>前面讲到direct类型的Exchange路由规则是完全匹配binding key与routing key，但这种严格的匹配方式在很多情况下不能满足实际业务需求。topic类型的Exchange在匹配规则上进行了扩展，它与direct类型的Exchage相似，也是将消息路由到binding key与routing key相匹配的Queue中，但这里的匹配规则有些不同，它约定：</p>
+<ul>
+<li>routing key为一个句点号“. ”分隔的字符串（我们将被句点号“. ”分隔开的每一段独立的字符串称为一个单词），如“stock.usd.nyse”、“nyse.vmw”、“quick.orange.rabbit”</li>
+<li>binding key与routing key一样也是句点号“. ”分隔的字符串</li>
+<li>binding key中可以存在两种特殊字符“<em>”与“#”，用于做模糊匹配，其中“</em>”用于匹配一个单词，“#”用于匹配多个单词（可以是零个）</li>
+</ul>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104233644-253637000.png" alt="img"></p>
+<p>以上图中的配置为例，routingKey=”quick.orange.rabbit”的消息会同时路由到Q1与Q2，routingKey=”lazy.orange.fox”的消息会路由到Q1，routingKey=”lazy.brown.fox”的消息会路由到Q2，routingKey=”lazy.pink.rabbit”的消息会路由到Q2（只会投递给Q2一次，虽然这个routingKey与Q2的两个bindingKey都匹配）；routingKey=”quick.brown.fox”、routingKey=”orange”、routingKey=”quick.orange.male.rabbit”的消息将会被丢弃，因为它们没有匹配任何bindingKey。</p>
+<h3 id="headers"><a href="#headers" class="headerlink" title="headers"></a>headers</h3><p>headers类型的Exchange不依赖于routing key与binding key的匹配规则来路由消息，而是根据发送的消息内容中的headers属性进行匹配。<br>在绑定Queue与Exchange时指定一组键值对；当消息发送到Exchange时，RabbitMQ会取到该消息的headers（也是一个键值对的形式），对比其中的键值对是否完全匹配Queue与Exchange绑定时指定的键值对；如果完全匹配则消息会路由到该Queue，否则不会路由到该Queue。<br>该类型的Exchange没有用到过（不过也应该很有用武之地），所以不做介绍。</p>
+<h3 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h3><p>MQ本身是基于异步的消息处理，前面的示例中所有的生产者（P）将消息发送到RabbitMQ后不会知道消费者（C）处理成功或者失败（甚至连有没有消费者来处理这条消息都不知道）。<br>但实际的应用场景中，我们很可能需要一些同步处理，需要同步等待服务端将我的消息处理完成后再进行下一步处理。这相当于RPC（Remote Procedure Call，远程过程调用）。在RabbitMQ中也支持RPC。</p>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104253450-1490098886.png" alt="img"></p>
+<p>RabbitMQ中实现RPC的机制是：</p>
+<ul>
+<li>客户端发送请求（消息）时，在消息的属性（MessageProperties，在AMQP协议中定义了14中properties，这些属性会随着消息一起发送）中设置两个值replyTo（一个Queue名称，用于告诉服务器处理完成后将通知我的消息发送到这个Queue中）和correlationId（此次请求的标识号，服务器处理完成后需要将此属性返还，客户端将根据这个id了解哪条请求被成功执行了或执行失败）</li>
+<li>服务器端收到消息并处理</li>
+<li>服务器端处理完消息后，将生成一条应答消息到replyTo指定的Queue，同时带上correlationId属性</li>
+<li>客户端之前已订阅replyTo指定的Queue，从中收到服务器的应答消息后，根据其中的correlationId属性分析哪条请求被执行了，根据执行结果进行后续业务处理</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>markdown基本语法</title>
+    <url>/2019/11/28/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><hr>
+<p>↑ 分割线</p>
+<blockquote>
+<p>引述</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">代码块</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">funcname</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p><code>__init__</code> 代码内容</p>
+<p><strong>加粗文字</strong> <code>ctrl + B</code></p>
+<p><em>倾斜文字</em> <code>CTRL + I</code></p>
+<p><strong><em>倾斜加粗</em></strong></p>
+<p><del>删除线</del></p>
+<ul>
+<li>无序列表</li>
+<li>序号与内容之间有空格</li>
+</ul>
+<ol>
+<li>有序列表</li>
+<li>序号和内容之间有空格</li>
+</ol>
+<ul>
+<li><input disabled type="checkbox"> 任务列表1  </li>
+<li><input disabled type="checkbox"> 任务列表2</li>
+<li><input disabled type="checkbox"> 任务列表3</li>
+</ul>
+<blockquote>
+<p>alt + c 可以快速打勾</p>
+</blockquote>
+<p><strong>换行</strong> 在一<br>行的结尾处加上2个或<br>2个以上的空格</p>
+<hr>
+<p><strong>表格</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">表头1</th>
+<th align="left">表头2</th>
+<th align="right">表头3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">2</td>
+<td align="right">3</td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
+  <entry>
+    <title>flask在服务器上运行</title>
+    <url>/2019/11/28/flask%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C/</url>
+    <content><![CDATA[<p>1.上传项目<br>将项目文件使用Xftp上传至某目录下</p>
+<p>2.修改nginx配置文件<br>在/etc/nginx/conf.d/文件夹下找到其配置文件<br>添加nginx 需要监听的端口信息<br>末尾添加类似代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 8001;</span><br><span class="line">    #主机公网IP</span><br><span class="line">    server_name instagram.zhyh2010.com;</span><br><span class="line">    location /&#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8000;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际上， 我们将外部通过 8001 端口发送过来的请求， 代理给了 127.0.0.1:8000 也就是我们的 flask 项目</p>
+<p>3.配置文件修改重装载</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<p>附Nginx操作代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#重启服务：</span><br><span class="line">service nginx restart</span><br><span class="line"></span><br><span class="line">#快速停止或关闭Nginx：</span><br><span class="line">nginx -s stop</span><br><span class="line"></span><br><span class="line"> 正常停止或关闭Nginx：</span><br><span class="line">nginx -s quit</span><br><span class="line"></span><br><span class="line"> 配置文件修改重装载命令：</span><br><span class="line">nginx -s reload</span><br><span class="line"></span><br><span class="line">查看端口运行状态：</span><br><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
+
+<p>运行程序<br>进入项目目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#确保已装flask</span><br><span class="line">pip install flask</span><br><span class="line">#运行程序</span><br><span class="line">python app.py</span><br></pre></td></tr></table></figure>
+
+<p>————————————————</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>CentOS 7 安装 python3 v1.1</title>
+    <url>/2019/11/28/CentOS%207%20%E5%AE%89%E8%A3%85%20python3%20v1.1/</url>
+    <content><![CDATA[<h2 id="CentOS-7-安装-python3"><a href="#CentOS-7-安装-python3" class="headerlink" title="CentOS 7 安装 python3"></a>CentOS 7 安装 python3</h2><blockquote>
+<p>CentOS 7 自带的python为python2.7版本，yum等包依赖于python2，不可以直接卸载。需要下载python3的源码后自行编译安装。以下是安装步骤</p>
+</blockquote>
+<h4 id="1-安装用于编译python源码的依赖包"><a href="#1-安装用于编译python源码的依赖包" class="headerlink" title="1. 安装用于编译python源码的依赖包"></a>1. 安装用于编译python源码的依赖包</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc* make -y</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-安装下载源码的工具"><a href="#2-安装下载源码的工具" class="headerlink" title="2. 安装下载源码的工具"></a>2. 安装下载源码的工具</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install wget</span><br><span class="line"><span class="meta">#</span><span class="bash"> 由于还没有python3，这里的wget是安装到了python2.7中</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-下载python源码"><a href="#3-下载python源码" class="headerlink" title="3. 下载python源码"></a>3. 下载python源码</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-编译"><a href="#4-编译" class="headerlink" title="4. 编译"></a>4. 编译</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">tar -xvJf Python-3.7.5.tar.xz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入解压后的目录，配置安装路径</span></span><br><span class="line">./configure prefix=/usr/local/python3</span><br><span class="line"><span class="meta">#</span><span class="bash"> 编译安装</span></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-添加软链接"><a href="#5-添加软链接" class="headerlink" title="5. 添加软链接"></a>5. 添加软链接</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加python3的软链接</span></span><br><span class="line">ln -s /usr/local/python3/bin/python3 /usr/bin/python3</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加pip3的软连接</span></span><br><span class="line">ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">测试是否安装成功了</span></span><br><span class="line">python3 -V</span><br></pre></td></tr></table></figure>
+
+
+
+
+<blockquote>
+<p>python指向的是python2，python2指向的是python2.7，在装完python3后，将python指向python3，然后python2指向python2.7，那么两个版本的python就能共存了</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /usr/bin/yum</span><br><span class="line">把#! /usr/bin/python修改为#! /usr/bin/python2</span><br><span class="line"></span><br><span class="line">vi /usr/libexec/urlgrabber-ext-down</span><br><span class="line">把#! /usr/bin/python 修改为#! /usr/bin/python2</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
     <title>flask-socketio</title>
     <url>/2019/11/28/flask-socketio/</url>
     <content><![CDATA[<!-- vim-markdown-toc GFM -->

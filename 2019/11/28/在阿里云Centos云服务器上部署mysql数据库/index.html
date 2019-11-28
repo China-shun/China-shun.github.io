@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>在阿里云Centos云服务器上部署mysql数据库 - 铿锵小顺的博客</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Clang Shun的博客，主要涉及到编程（Java，Python，Linux等），个人提升学习，视频教程，《肯定会软件技术》电台节目 keywords: wistbean，supervisor，java，python，电台，教程,在阿里云Centos云服务器上部署mysql数据库
+首先查看centos7上有没有安装过mysql ,一定要卸载干净残留，不然会安装或启动失败。
+
+12yum list installed mysq,"> 
+    <meta name="author" content="Shun"> 
+    <link rel="alternative" href="atom.xml" title="铿锵小顺的博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">铿锵小顺的博客</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" target="_blank" rel="noopener" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">在阿里云Centos云服务器上部署mysql数据库</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" target="_blank" rel="noopener" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;" target="_blank" rel="noopener"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">在阿里云Centos云服务器上部署mysql数据库</h1>
+        <div class="stuff">
+            <span>十一月 28, 2019</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h1 id="在阿里云Centos云服务器上部署mysql数据库"><a href="#在阿里云Centos云服务器上部署mysql数据库" class="headerlink" title="在阿里云Centos云服务器上部署mysql数据库"></a>在阿里云Centos云服务器上部署mysql数据库</h1><blockquote>
+<p>首先查看centos7上有没有安装过mysql ,一定要卸载干净残留，不然会安装或启动失败。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum list installed mysql*</span><br><span class="line">列出后如果有就删除</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>删除mysql</em></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove mysql-community-*</span><br><span class="line">rm -rf /var/lib/mysql</span><br><span class="line">rm /etc/my.cnf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>安装yum源</em></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br><span class="line">sudo yum instal   mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>查看是否安装成功</em></li>
+</ul>
+<p><code>sudo yum repolist all|grep mysql</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2067965-8277cf35d4e8c628.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/688/format/webp" alt="img"></p>
+<p>成功安装</p>
+<ul>
+<li><em>配置要安装的mysql版本</em></li>
+</ul>
+<p><code>sudo vim /etc/yum.repos.d/mysql-community.repo</code></p>
+<p><strong>enabled 为1表示启用，将要安装的版本的enabled改为1后保存</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2067965-c7fedc62b2bab299.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/657/format/webp" alt="img"></p>
+<p>配置repo</p>
+<ul>
+<li><em>安装启动mysql</em><br><code>sudo yum install mysql-community-server.x86_64</code></li>
+</ul>
+<p><em>等待安装好后启动mysql</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysqld start      //启动mysql</span><br><span class="line">sudo service mysqld status   //查看mysql状态</span><br><span class="line">sudo systemctl enable mysqld //配置开机启动</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>管理账户</em></li>
+</ul>
+<p><em>mysql安装完成之后，在/var/log/mysqld.log文件中给root生成了一个默认密码。通过下面的方式找到root默认密码，然后登录mysql进行修改：</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep &apos;temporary password&apos; /var/log/mysqld.log  //找到默认密码</span><br><span class="line">mysql -uroot -p </span><br><span class="line">set password for &apos;root&apos;@&apos;localhost&apos;=password(&apos;NEWPASSWORD&apos;); 或者ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;NEWPASSWORD&apos;;  // 修改密码,注意密码要复杂一些，否则会不能通过。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>添加远程用户</em></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;username&apos;@&apos;%&apos; IDENTIFIED BY &apos;password&apos; WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>查看并修改编码</em></li>
+</ul>
+<p><code>mysql -u root -p</code><br><code>show variables like &#39;%char%;</code><br>看到有的编码不是 <code>utf8</code><br><em>更改配置文件</em><br><code>vim /etc/my.cnf</code><br><em>在[mysqld]下面添加以下两句</em></p>
+<p><code>character_set_server=utf8</code><br><code>collation-server=utf8_general_ci</code><br><em>在[client]下面添加</em><br><code>default-character-set=utf8</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2067965-d4e266a5524f9690.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/427/format/webp" alt="img"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2067965-c386fc983b323d5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/715/format/webp" alt="img"></p>
+<p>修改成功</p>
+<p><strong>注意修改后只会对以后创建的数据库生效。</strong></p>
+<p>然后登陆阿里云配置安全组</p>
+<ul>
+<li><p>通过实例列表选中服务器后，进入实例详情页面</p>
+</li>
+<li><p>在左侧点击<strong>本实例安全组</strong></p>
+</li>
+<li><p>在安全组列表里选中你的服务器实例</p>
+</li>
+<li><p>页面默认会在<strong>安全组规则</strong>分页中</p>
+<p>​</p>
+</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g9ahndkb6dj31hc0eldh8.jpg" alt="微信截图_20191125185914.png"></p>
+<p>如图所示</p>
+<p><img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g9ahoa3tt8j30gm0ifgm2.jpg" alt="微信截图_20191125190055.png">)<img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g9ahohopf7j31au09v74u.jpg" alt="微信截图_20191125190121.png">)<img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g9ahonlotjj31au09a0t2.jpg" alt="微信截图_20191125190133.png"></p>
+<p>这样配置应该就会成功了</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='https://music.163.com/#/song?id=234014'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://music.163.com/#/song?id=1404906595'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
