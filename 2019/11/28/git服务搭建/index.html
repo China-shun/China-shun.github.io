@@ -5,12 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hello Chocolates - 铿锵小顺的博客</title>
+    <title>git服务搭建 - 铿锵小顺的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="Clang Shun的博客，主要涉及到编程（Java，Python，Linux等），个人提升学习，视频教程，《肯定会软件技术》电台节目 keywords: wistbean，supervisor，java，python，电台，教程,Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any pr,"> 
+    <meta name="description" content="Clang Shun的博客，主要涉及到编程（Java，Python，Linux等），个人提升学习，视频教程，《肯定会软件技术》电台节目 keywords: wistbean，supervisor，java，python，电台，教程,创建用户账号添加用户： useradd  test_user
+设置密码： passwd test_user 
+登录： ssh test_user@62.234.92.111          命令格,"> 
     <meta name="author" content="Shun"> 
     <link rel="alternative" href="atom.xml" title="铿锵小顺的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -36,7 +38,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;" target="_blank" rel="noopener" data-url="http://yoursite.com"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">Hello Chocolates</h3>
+    <h3 class="subtitle">git服务搭建</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" target="_blank" rel="noopener" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -54,29 +56,50 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">Hello Chocolates</h1>
+        <h1 class="title">git服务搭建</h1>
         <div class="stuff">
-            <span>十一月 25, 2019</span>
+            <span>十一月 28, 2019</span>
             
 
         </div>
         <div class="content markdown">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+            <h1 id="创建用户账号"><a href="#创建用户账号" class="headerlink" title="创建用户账号"></a>创建用户账号</h1><p>添加用户： useradd  test_user</p>
+<p>设置密码： passwd test_user </p>
+<p>登录： ssh <a href="mailto:test_user@62.234.92.111" target="_blank" rel="noopener">test_user@62.234.92.111</a>          命令格式：     ssh    用户名@ip地址</p>
+<h1 id="使用公钥私钥登录"><a href="#使用公钥私钥登录" class="headerlink" title="使用公钥私钥登录"></a>使用公钥私钥登录</h1><h2 id="配置sshd服务参数"><a href="#配置sshd服务参数" class="headerlink" title="配置sshd服务参数"></a>配置sshd服务参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br><span class="line">RSAAuthentication yes   # 启用RSA 非对称加密算法</span><br><span class="line">PubkeyAuthentication yes   # 公钥认证</span><br><span class="line">PasswordAuthentication yes  #允许密码认证</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>修改配置后需要重启服务：  systemctl restart sshd.service</p>
+<h2 id="创建ssh权限目录和文件"><a href="#创建ssh权限目录和文件" class="headerlink" title="创建ssh权限目录和文件"></a>创建ssh权限目录和文件</h2><p>生成公钥私钥： ssh-keygen</p>
+<p>切换用户   su - test_user</p>
+<p>创建文件夹：  mkdir .ssh   </p>
+<p>设置.ssh目录权限   chmod 700 .ssh</p>
+<p>创建文件： touch .ssh/authorized_keys</p>
+<p>设置authorized_keys权限   chmod 600 .ssh/authorized_keys</p>
+<p>使用证书登录   ssh <a href="mailto:test_user@62.234.92.111" target="_blank" rel="noopener">test_user@62.234.92.111</a>   -i 证书路径</p>
+<h1 id="搭建git服务"><a href="#搭建git服务" class="headerlink" title="搭建git服务"></a>搭建git服务</h1><p>创建git用户    useradd git</p>
+<p>设置git用户ssh权限目录和文件</p>
+<p>创建一个裸版本库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su - git                            # 登录git用户</span><br><span class="line">git init --bare project.git         # 创建一个裸仓库</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h2 id="创建一个文件并提交"><a href="#创建一个文件并提交" class="headerlink" title="创建一个文件并提交"></a>创建一个文件并提交</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch readme.txt                          # 创建readme.txt 文件</span><br><span class="line">git add readme.txt                         # 添加到暂存区中 </span><br><span class="line">git commit -m &quot;添加readme文件&quot;              # 提交到本地版本库里</span><br><span class="line">git push origin                            # 推送到远程仓库</span><br><span class="line">git pull origin                           # 拉取文件</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="git-常用命令"><a href="#git-常用命令" class="headerlink" title="git 常用命令"></a>git 常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">git</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
             </audio>
             
@@ -87,7 +110,11 @@
                         
                     
                         
-                            <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                            <li title='1' data-url='https://music.163.com/#/song?id=234014'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://music.163.com/#/song?id=1404906595'></li>
                         
                     
                 </ul>
