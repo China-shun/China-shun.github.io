@@ -1,62 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>选择在Linux下安装redis</title>
-    <url>/2019/11/28/%E9%80%89%E6%8B%A9%E5%9C%A8Linux%E4%B8%8B%E5%AE%89%E8%A3%85redis/</url>
-    <content><![CDATA[<p>选择在Linux下安装redis，</p>
-<p>1.安装gcc  redis是c语言编写的</p>
-<pre><code>yum install gcc-c++</code></pre><p>2.下载redis安装包,在root目录下执行</p>
-<pre><code>wget http://download.redis.io/releases/redis-5.0.4.tar.gz</code></pre><p>3.解压redis安装包</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxvf redis-5.0.4.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>4.进入redis目录</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd redis-5.0.4</span><br></pre></td></tr></table></figure>
-
-<p>5.编译</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
-
-<p>6.安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make PREFIX=/usr/local/redis install</span><br></pre></td></tr></table></figure>
-
-<p>7.拷贝redis.conf到安装目录</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp redis.conf /usr/local/redis</span><br></pre></td></tr></table></figure>
-
-<p>8.进入 /usr/local/redis目录</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /usr/local/redis/</span><br></pre></td></tr></table></figure>
-
-<p>9.编辑redis.conf   </p>
-<pre><code>vim redis.conf
-
-1.后台启动，daemonize yes
-
-2.绑定端口，port 6379 默认是6379 需要安全组开放端口
-
-3.绑定IP，bind 127.0.0.1:默认的
-
-4.指定数据存放路径，dir /usr/local/redis/log存放的路径
-
-5.指定持久化方式，appendonly yes
-
-6.requirepass redis129 设置密码</code></pre><p> 10.后端启动redis：</p>
-<pre><code>./bin/redis-server ./redis.conf</code></pre><p>11.查看是否启动成功：</p>
-<pre><code>ps aux | grep redis</code></pre><p>12.杀死redis并重新启动redis:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkill -9 redis-server</span><br><span class="line">./bin/redis-server ./redis.conf</span><br></pre></td></tr></table></figure>
-
-<p>13.检测是否开启</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps axu | grep redis-server</span><br></pre></td></tr></table></figure>
-
-<p>14.客户端远程通过ip连接redis</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bin/redis-cli -h 127.0.0.1 -p 6379</span><br></pre></td></tr></table></figure>
-
-<p>如果出现如下，就是代表连接成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
     <title>在阿里云Centos云服务器上部署mysql数据库</title>
     <url>/2019/11/28/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91Centos%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
-    <content><![CDATA[<h1 id="在阿里云Centos云服务器上部署mysql数据库"><a href="#在阿里云Centos云服务器上部署mysql数据库" class="headerlink" title="在阿里云Centos云服务器上部署mysql数据库"></a>在阿里云Centos云服务器上部署mysql数据库</h1><blockquote>
+    <content><![CDATA[<p>layout: article</p>
+<p>title: 在阿里云Centos云服务器上部署mysql数据库<br>date: 2018-4-23</p>
+<h1 id="在阿里云Centos云服务器上部署mysql数据库"><a href="#在阿里云Centos云服务器上部署mysql数据库" class="headerlink" title="在阿里云Centos云服务器上部署mysql数据库"></a>在阿里云Centos云服务器上部署mysql数据库</h1><blockquote>
 <p>首先查看centos7上有没有安装过mysql ,一定要卸载干净残留，不然会安装或启动失败。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum list installed mysql*</span><br><span class="line">列出后如果有就删除</span><br></pre></td></tr></table></figure>
@@ -119,7 +68,6 @@
 <li><p>在安全组列表里选中你的服务器实例</p>
 </li>
 <li><p>页面默认会在<strong>安全组规则</strong>分页中</p>
-<p>​</p>
 </li>
 </ul>
 <p><img src="http://ww1.sinaimg.cn/large/006Z3bUvly1g9ahndkb6dj31hc0eldh8.jpg" alt="微信截图_20191125185914.png"></p>
@@ -130,8 +78,8 @@
   </entry>
   <entry>
     <title>微信小程序-注册整体过程</title>
-    <url>/2019/11/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B3%A8%E5%86%8C%E6%95%B4%E4%BD%93%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="微信小程序-注册整体过程"><a href="#微信小程序-注册整体过程" class="headerlink" title="微信小程序-注册整体过程"></a>微信小程序-注册整体过程</h1><h2 id="reg-wxml"><a href="#reg-wxml" class="headerlink" title="reg.wxml"></a>reg.wxml</h2><p><img src="/2019/11/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B3%A8%E5%86%8C%E6%95%B4%E4%BD%93%E8%BF%87%E7%A8%8B/C:%5CUsers%5Cshun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1574651962596.png" alt="1574651962596"></p>
+    <url>/2019/04/08/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B3%A8%E5%86%8C%E6%95%B4%E4%BD%93%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="微信小程序-注册整体过程"><a href="#微信小程序-注册整体过程" class="headerlink" title="微信小程序-注册整体过程"></a>微信小程序-注册整体过程</h1><h2 id="reg-wxml"><a href="#reg-wxml" class="headerlink" title="reg.wxml"></a>reg.wxml</h2><p><img src="/2019/04/08/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B3%A8%E5%86%8C%E6%95%B4%E4%BD%93%E8%BF%87%E7%A8%8B/C:%5CUsers%5Cshun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1574651962596.png" alt="1574651962596"></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view&gt;</span><br><span class="line">  &lt;view class=&quot;row&quot;&gt;</span><br><span class="line">  # &lt;input class=&quot;info-input&quot; placeholder=&quot;请输入用户名&quot; bindinput=&quot;name&quot;&gt;&lt;/input&gt;</span><br><span class="line">    &lt;input class=&quot;info-input&quot; placeholder=&quot;请输入用户名&quot; bindchange=&quot;name&quot;&gt;&lt;/input&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">  &lt;view class=&apos;row&apos;&gt;</span><br><span class="line">    &lt;view class=&apos;info&apos;&gt;</span><br><span class="line">   #&lt;input class=&quot;info-input&quot; type=&quot;password&quot; placeholder=&quot;请输入密码&quot; bindinput=&quot;password&quot;&gt;&lt;/input&gt;</span><br><span class="line">    &lt;input class=&quot;info-input&quot; type=&quot;password&quot; placeholder=&quot;请输入密码&quot; bindchange=&quot;password&quot;&gt;&lt;/input&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">  &lt;button class=&quot;submit&quot; bindtap=&quot;reg&quot;&gt;注册&lt;/button&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="reg-js"><a href="#reg-js" class="headerlink" title="reg.js"></a>reg.js</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// miniprogram/pages/reg/reg.js</span><br><span class="line">Page(&#123;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * 页面的初始数据</span><br><span class="line">   */</span><br><span class="line">  data: &#123;</span><br><span class="line">    name: &apos;&apos;,</span><br><span class="line">    password: &apos;&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  //获取用户输入的用户名</span><br><span class="line">  name: function (n) &#123;</span><br><span class="line">    // debugger</span><br><span class="line">    var content = n.detail.value</span><br><span class="line">    this.setData(&#123;  </span><br><span class="line">      name: content,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line"> //获取用户输入的密码</span><br><span class="line">  password: function (e) &#123;</span><br><span class="line">    var pwd = e.detail.value;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      password: pwd,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  # 绑定的点击事件</span><br><span class="line">  reg: function () &#123;</span><br><span class="line">    // debugger</span><br><span class="line">    console.log(this.data)</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      url: &apos;http://127.0.0.1:8000/app/reg/&apos;,</span><br><span class="line">      method: &apos;post&apos;,</span><br><span class="line">      data: &#123;</span><br><span class="line">        &apos;name&apos;: this.data.name,</span><br><span class="line">        &apos;password&apos;: this.data.password</span><br><span class="line">      &#125;,</span><br><span class="line">      header: &#123;</span><br><span class="line">        // &apos;content-type&apos;: &apos;application/json&apos;    //get 方式</span><br><span class="line">        &apos;content-type&apos;: &apos;application/x-www-form-urlencoded&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">      success: function (res) &#123;</span><br><span class="line">        if(res.data.code==200)&#123;</span><br><span class="line">          console.log(res)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          console.log(res)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
@@ -143,7 +91,7 @@
   </entry>
   <entry>
     <title>微信小程序获取用户信息以及用户的openid</title>
-    <url>/2019/11/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E4%BB%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E7%9A%84openid/</url>
+    <url>/2019/04/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E4%BB%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E7%9A%84openid/</url>
     <content><![CDATA[<h1 id="微信小程序获取用户信息以及用户的openid"><a href="#微信小程序获取用户信息以及用户的openid" class="headerlink" title="微信小程序获取用户信息以及用户的openid"></a>微信小程序获取用户信息以及用户的openid</h1><ul>
 <li><p>在微信开发者工具新创建一个项目时，新项目的示例中已有如何获取用户基本信息的例子，此处不再赘述</p>
 </li>
@@ -172,7 +120,6 @@
 <p>​        具体还不知道是哪里有问题，这样的报错可以自行百度</p>
 <p>​    ⑵ appid或者appsecret有误：</p>
 <p>​        这样的报错极有可能是在创建新项目的时候appid被替换了，需要给这个项目替换上微信公众平台上的appid，并重置一个appsecret再来试试</p>
-<p>​</p>
 </li>
 </ul>
 </li>
@@ -180,163 +127,49 @@
 ]]></content>
   </entry>
   <entry>
-    <title>生成随机字符串</title>
-    <url>/2019/11/28/%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
-    <content><![CDATA[<h3 id="生成随机字符串"><a href="#生成随机字符串" class="headerlink" title="生成随机字符串"></a>生成随机字符串</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法一</span></span><br><span class="line">tmp = os.urandom(<span class="number">44</span>)</span><br><span class="line">secret_key = base64.b64encode(tmp)</span><br><span class="line">print(secret_key)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_random_secret_key</span><span class="params">(length=<span class="number">12</span>, allowed_chars=None, secret_key=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    生成随机字符串</span></span><br><span class="line"><span class="string">    :param length: 随机字符串长度</span></span><br><span class="line"><span class="string">    :param allowed_chars: 随机字符串字符取值范围</span></span><br><span class="line"><span class="string">    :param secret_key: 生成随机字符串的随机字符串</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> secret_key <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        secret_key = <span class="string">"n&amp;^-9#k*-6pwzsjt-qsc@s3$l46k(7e%f80e7gx^f#vouf3yvz"</span></span><br><span class="line">    <span class="keyword">if</span> allowed_chars <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        allowed_chars = <span class="string">'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)'</span></span><br><span class="line"></span><br><span class="line">    random.seed(</span><br><span class="line">        hashlib.sha256(</span><br><span class="line">            (<span class="string">"%s%s%s"</span> % (</span><br><span class="line">                random.getstate(),</span><br><span class="line">                time.time(),</span><br><span class="line">                secret_key)).encode(<span class="string">'utf-8'</span>)</span><br><span class="line">        ).digest())</span><br><span class="line">    ret = <span class="string">''</span>.join(random.choice(allowed_chars) <span class="keyword">for</span> i <span class="keyword">in</span> range(length))</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>rabbitmq原理及基础概念</title>
-    <url>/2019/11/28/rabbitmq%E5%8E%9F%E7%90%86%E5%8F%8A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<h3 id="RabbitMQ简介"><a href="#RabbitMQ简介" class="headerlink" title="RabbitMQ简介"></a>RabbitMQ简介</h3><p>AMQP，即Advanced Message Queuing Protocol，高级消息队列协议，是应用层协议的一个开放标准，为面向消息的<a href="http://www.diggerplus.org/archives/tag/%e4%b8%ad%e9%97%b4%e4%bb%b6" target="_blank" rel="noopener">中间件</a>设计。消息中间件主要用于组件之间的解耦，消息的发送者无需知道消息使用者的存在，反之亦然。<br>AMQP的主要特征是面向消息、队列、路由（包括点对点和发布/订阅）、可靠性、安全。<br>RabbitMQ是一个开源的AMQP实现，服务器端用Erlang语言编写，支持多种客户端，如：Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP、STOMP等，支持AJAX。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。<br>下面将重点介绍RabbitMQ中的一些基础概念，了解了这些概念，是使用好RabbitMQ的基础。</p>
-<h3 id="ConnectionFactory、Connection、Channel"><a href="#ConnectionFactory、Connection、Channel" class="headerlink" title="ConnectionFactory、Connection、Channel"></a>ConnectionFactory、Connection、Channel</h3><p>ConnectionFactory、Connection、Channel都是RabbitMQ对外提供的API中最基本的对象。Connection是RabbitMQ的socket链接，它封装了socket协议相关部分逻辑。ConnectionFactory为Connection的制造工厂。<br>Channel是我们与RabbitMQ打交道的最重要的一个接口，我们大部分的业务操作是在Channel这个接口中完成的，包括定义Queue、定义Exchange、绑定Queue与Exchange、发布消息等。</p>
-<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p>Queue（队列）是RabbitMQ的内部对象，用于存储消息，用下图表示。<br><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819103814085-804287529.png" alt="img"></p>
-<p>RabbitMQ中的消息都只能存储在Queue中，生产者（下图中的P）生产消息并最终投递到Queue中，消费者（下图中的C）可以从Queue中获取消息并消费。</p>
-<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819103830954-867723738.png" alt="img"></p>
-<p>多个消费者可以订阅同一个Queue，这时Queue中的消息会被平均分摊给多个消费者进行处理，而不是每个消费者都收到所有的消息并处理。</p>
-<h3 id="Message-acknowledgment"><a href="#Message-acknowledgment" class="headerlink" title="Message acknowledgment"></a>Message acknowledgment</h3><p>在实际应用中，可能会发生消费者收到Queue中的消息，但没有处理完成就宕机（或出现其他意外）的情况，这种情况下就可能会导致消息丢失。为了避免这种情况发生，我们可以要求消费者在消费完消息后发送一个回执给RabbitMQ，RabbitMQ收到消息回执（Message acknowledgment）后才将该消息从Queue中移除；如果RabbitMQ没有收到回执并检测到消费者的RabbitMQ连接断开，则RabbitMQ会将该消息发送给其他消费者（如果存在多个消费者）进行处理。这里不存在timeout概念，一个消费者处理消息时间再长也不会导致该消息被发送给其他消费者，除非它的RabbitMQ连接断开。<br>这里会产生另外一个问题，如果我们的开发人员在处理完业务逻辑后，忘记发送回执给RabbitMQ，这将会导致严重的bug——Queue中堆积的消息会越来越多；消费者重启后会重复消费这些消息并重复执行业务逻辑…</p>
-<h3 id="Message-durability"><a href="#Message-durability" class="headerlink" title="Message durability"></a>Message durability</h3><p>如果我们希望即使在RabbitMQ服务重启的情况下，也不会丢失消息，我们可以将Queue与Message都设置为可持久化的（durable），这样可以保证绝大部分情况下我们的RabbitMQ消息不会丢失。但依然解决不了小概率丢失事件的发生（比如RabbitMQ服务器已经接收到生产者的消息，但还没来得及持久化该消息时RabbitMQ服务器就断电了），如果我们需要对这种小概率事件也要管理起来，那么我们要用到事务。由于这里仅为RabbitMQ的简单介绍，所以这里将不讲解RabbitMQ相关的事务。</p>
-<h3 id="Prefetch-count"><a href="#Prefetch-count" class="headerlink" title="Prefetch count"></a>Prefetch count</h3><p>前面我们讲到如果有多个消费者同时订阅同一个Queue中的消息，Queue中的消息会被平摊给多个消费者。这时如果每个消息的处理时间不同，就有可能会导致某些消费者一直在忙，而另外一些消费者很快就处理完手头工作并一直空闲的情况。我们可以通过设置prefetchCount来限制Queue每次发送给每个消费者的消息数，比如我们设置prefetchCount=1，则Queue每次给每个消费者发送一条消息；消费者处理完这条消息后Queue会再给该消费者发送一条消息。</p>
-<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104007647-1027286628.png" alt="img"></p>
-<h3 id="Exchange"><a href="#Exchange" class="headerlink" title="Exchange"></a>Exchange</h3><p>在上一节我们看到生产者将消息投递到Queue中，实际上这在RabbitMQ中这种事情永远都不会发生。实际的情况是，生产者将消息发送到Exchange（交换器，下图中的X），由Exchange将消息路由到一个或多个Queue中（或者丢弃）。</p>
-<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104028789-412276700.png" alt="img"></p>
-<p>Exchange是按照什么逻辑将消息路由到Queue的？这个将在Binding一节介绍。<br>RabbitMQ中的Exchange有四种类型，不同的类型有着不同的路由策略，这将在Exchange Types一节介绍。</p>
-<h3 id="routing-key"><a href="#routing-key" class="headerlink" title="routing key"></a>routing key</h3><p>生产者在将消息发送给Exchange的时候，一般会指定一个routing key，来指定这个消息的路由规则，而这个routing key需要与Exchange Type及binding key联合使用才能最终生效。<br>在Exchange Type与binding key固定的情况下（在正常使用时一般这些内容都是固定配置好的），我们的生产者就可以在发送消息给Exchange时，通过指定routing key来决定消息流向哪里。<br>RabbitMQ为routing key设定的长度限制为255 bytes。</p>
-<h3 id="Binding"><a href="#Binding" class="headerlink" title="Binding"></a>Binding</h3><p>RabbitMQ中通过Binding将Exchange与Queue关联起来，这样RabbitMQ就知道如何正确地将消息路由到指定的Queue了。<br><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104128931-1338459538.png" alt="img"></p>
-<h3 id="Binding-key"><a href="#Binding-key" class="headerlink" title="Binding key"></a>Binding key</h3><p>在绑定（Binding）Exchange与Queue的同时，一般会指定一个binding key；消费者将消息发送给Exchange时，一般会指定一个routing key；当binding key与routing key相匹配时，消息将会被路由到对应的Queue中。这个将在Exchange Types章节会列举实际的例子加以说明。<br>在绑定多个Queue到同一个Exchange的时候，这些Binding允许使用相同的binding key。<br>binding key 并不是在所有情况下都生效，它依赖于Exchange Type，比如fanout类型的Exchange就会无视binding key，而是将消息路由到所有绑定到该Exchange的Queue。</p>
-<h3 id="Exchange-Types"><a href="#Exchange-Types" class="headerlink" title="Exchange Types"></a>Exchange Types</h3><p>RabbitMQ常用的Exchange Type有fanout、direct、topic、headers这四种（AMQP规范里还提到两种Exchange Type，分别为system与自定义，这里不予以描述），下面分别进行介绍。</p>
-<h3 id="fanout"><a href="#fanout" class="headerlink" title="fanout"></a>fanout</h3><p>fanout类型的Exchange路由规则非常简单，它会把所有发送到该Exchange的消息路由到所有与它绑定的Queue中。<br><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104152177-2053988251.png" alt="img"></p>
-<p>上图中，生产者（P）发送到Exchange（X）的所有消息都会路由到图中的两个Queue，并最终被两个消费者（C1与C2）消费。</p>
-<h3 id="direct"><a href="#direct" class="headerlink" title="direct"></a>direct</h3><p>direct类型的Exchange路由规则也很简单，它会把消息路由到那些binding key与routing key完全匹配的Queue中。</p>
-<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104210818-1771762193.png" alt="img"></p>
-<p>以上图的配置为例，我们以routingKey=”error”发送消息到Exchange，则消息会路由到Queue1（amqp.gen-S9b…，这是由RabbitMQ自动生成的Queue名称）和Queue2（amqp.gen-Agl…）；如果我们以routingKey=”info”或routingKey=”warning”来发送消息，则消息只会路由到Queue2。如果我们以其他routingKey发送消息，则消息不会路由到这两个Queue中。</p>
-<h3 id="topic"><a href="#topic" class="headerlink" title="topic"></a>topic</h3><p>前面讲到direct类型的Exchange路由规则是完全匹配binding key与routing key，但这种严格的匹配方式在很多情况下不能满足实际业务需求。topic类型的Exchange在匹配规则上进行了扩展，它与direct类型的Exchage相似，也是将消息路由到binding key与routing key相匹配的Queue中，但这里的匹配规则有些不同，它约定：</p>
-<ul>
-<li>routing key为一个句点号“. ”分隔的字符串（我们将被句点号“. ”分隔开的每一段独立的字符串称为一个单词），如“stock.usd.nyse”、“nyse.vmw”、“quick.orange.rabbit”</li>
-<li>binding key与routing key一样也是句点号“. ”分隔的字符串</li>
-<li>binding key中可以存在两种特殊字符“<em>”与“#”，用于做模糊匹配，其中“</em>”用于匹配一个单词，“#”用于匹配多个单词（可以是零个）</li>
-</ul>
-<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104233644-253637000.png" alt="img"></p>
-<p>以上图中的配置为例，routingKey=”quick.orange.rabbit”的消息会同时路由到Q1与Q2，routingKey=”lazy.orange.fox”的消息会路由到Q1，routingKey=”lazy.brown.fox”的消息会路由到Q2，routingKey=”lazy.pink.rabbit”的消息会路由到Q2（只会投递给Q2一次，虽然这个routingKey与Q2的两个bindingKey都匹配）；routingKey=”quick.brown.fox”、routingKey=”orange”、routingKey=”quick.orange.male.rabbit”的消息将会被丢弃，因为它们没有匹配任何bindingKey。</p>
-<h3 id="headers"><a href="#headers" class="headerlink" title="headers"></a>headers</h3><p>headers类型的Exchange不依赖于routing key与binding key的匹配规则来路由消息，而是根据发送的消息内容中的headers属性进行匹配。<br>在绑定Queue与Exchange时指定一组键值对；当消息发送到Exchange时，RabbitMQ会取到该消息的headers（也是一个键值对的形式），对比其中的键值对是否完全匹配Queue与Exchange绑定时指定的键值对；如果完全匹配则消息会路由到该Queue，否则不会路由到该Queue。<br>该类型的Exchange没有用到过（不过也应该很有用武之地），所以不做介绍。</p>
-<h3 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h3><p>MQ本身是基于异步的消息处理，前面的示例中所有的生产者（P）将消息发送到RabbitMQ后不会知道消费者（C）处理成功或者失败（甚至连有没有消费者来处理这条消息都不知道）。<br>但实际的应用场景中，我们很可能需要一些同步处理，需要同步等待服务端将我的消息处理完成后再进行下一步处理。这相当于RPC（Remote Procedure Call，远程过程调用）。在RabbitMQ中也支持RPC。</p>
-<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104253450-1490098886.png" alt="img"></p>
-<p>RabbitMQ中实现RPC的机制是：</p>
-<ul>
-<li>客户端发送请求（消息）时，在消息的属性（MessageProperties，在AMQP协议中定义了14中properties，这些属性会随着消息一起发送）中设置两个值replyTo（一个Queue名称，用于告诉服务器处理完成后将通知我的消息发送到这个Queue中）和correlationId（此次请求的标识号，服务器处理完成后需要将此属性返还，客户端将根据这个id了解哪条请求被成功执行了或执行失败）</li>
-<li>服务器端收到消息并处理</li>
-<li>服务器端处理完消息后，将生成一条应答消息到replyTo指定的Queue，同时带上correlationId属性</li>
-<li>客户端之前已订阅replyTo指定的Queue，从中收到服务器的应答消息后，根据其中的correlationId属性分析哪条请求被执行了，根据执行结果进行后续业务处理</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>markdown基本语法</title>
-    <url>/2019/11/28/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><hr>
-<p>↑ 分割线</p>
-<blockquote>
-<p>引述</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">代码块</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">funcname</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+    <title>微信小程序代码规范</title>
+    <url>/2019/04/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</url>
+    <content><![CDATA[<h5 id="微信小程序里的四种文件"><a href="#微信小程序里的四种文件" class="headerlink" title="微信小程序里的四种文件"></a>微信小程序里的四种文件</h5><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.json</span> 后缀的 <span class="selector-tag">JSON</span> 配置文件</span><br><span class="line"><span class="selector-class">.wxml</span> 后缀的 <span class="selector-tag">WXML</span> 模板文件</span><br><span class="line"><span class="selector-class">.wxss</span> 后缀的 <span class="selector-tag">WXSS</span> 样式文件</span><br><span class="line"><span class="selector-class">.js</span> 后缀的 <span class="selector-tag">JS</span> 脚本逻辑文件</span><br></pre></td></tr></table></figure>
 
-<p><code>__init__</code> 代码内容</p>
-<p><strong>加粗文字</strong> <code>ctrl + B</code></p>
-<p><em>倾斜文字</em> <code>CTRL + I</code></p>
-<p><strong><em>倾斜加粗</em></strong></p>
-<p><del>删除线</del></p>
-<ul>
-<li>无序列表</li>
-<li>序号与内容之间有空格</li>
-</ul>
-<ol>
-<li>有序列表</li>
-<li>序号和内容之间有空格</li>
-</ol>
-<ul>
-<li><input disabled type="checkbox"> 任务列表1  </li>
-<li><input disabled type="checkbox"> 任务列表2</li>
-<li><input disabled type="checkbox"> 任务列表3</li>
-</ul>
-<blockquote>
-<p>alt + c 可以快速打勾</p>
-</blockquote>
-<p><strong>换行</strong> 在一<br>行的结尾处加上2个或<br>2个以上的空格</p>
-<hr>
-<p><strong>表格</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">表头1</th>
-<th align="left">表头2</th>
-<th align="right">表头3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="left">2</td>
-<td align="right">3</td>
-</tr>
-</tbody></table>
-]]></content>
-  </entry>
-  <entry>
-    <title>flask在服务器上运行</title>
-    <url>/2019/11/28/flask%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C/</url>
-    <content><![CDATA[<p>1.上传项目<br>将项目文件使用Xftp上传至某目录下</p>
-<p>2.修改nginx配置文件<br>在/etc/nginx/conf.d/文件夹下找到其配置文件<br>添加nginx 需要监听的端口信息<br>末尾添加类似代码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 8001;</span><br><span class="line">    #主机公网IP</span><br><span class="line">    server_name instagram.zhyh2010.com;</span><br><span class="line">    location /&#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8000;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h5><figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="meta">### 图片资源</span></span><br><span class="line">目前图片资源的主要性能问题在于大图片和长列表图片上，</span><br><span class="line">这两种情况都有可能导致 iOS 客户端内存占用上升，</span><br><span class="line">从而触发系统回收小程序页面。</span><br><span class="line"><span class="meta">### 图片对内存的影响</span></span><br><span class="line">在 iOS 上，小程序的页面是由多个 <span class="built_in">WKWebView</span> 组成的，</span><br><span class="line">在系统内存紧张时，会回收掉一部分 <span class="built_in">WKWebView</span>。</span><br><span class="line">从过去我们分析的案例来看，大图片和长列表图片的使用会引起 <span class="built_in">WKWebView</span> 的回收。</span><br><span class="line"><span class="meta">### 图片对页面切换的影响</span></span><br><span class="line">除了内存问题外，大图片也会造成页面切换的卡顿。</span><br><span class="line">我们分析过的案例中，有一部分小程序会在页面中引用大图片，</span><br><span class="line">在页面后退切换中会出现掉帧卡顿的情况。</span><br><span class="line">当前我们建议开发者尽量减少使用大图片资源。</span><br></pre></td></tr></table></figure>
 
-<p>实际上， 我们将外部通过 8001 端口发送过来的请求， 代理给了 127.0.0.1:8000 也就是我们的 flask 项目</p>
-<p>3.配置文件修改重装载</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+<h5 id="资源文件"><a href="#资源文件" class="headerlink" title="资源文件"></a>资源文件</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">所有资源文件(如图片)放在统一文件下及其子文件中(例如以下分类)</span><br><span class="line">resource</span><br><span class="line">  ——<span class="keyword">public</span></span><br><span class="line">  ——tab</span><br><span class="line">  ——home</span><br><span class="line">  ——mine</span><br></pre></td></tr></table></figure>
 
-<p>附Nginx操作代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#重启服务：</span><br><span class="line">service nginx restart</span><br><span class="line"></span><br><span class="line">#快速停止或关闭Nginx：</span><br><span class="line">nginx -s stop</span><br><span class="line"></span><br><span class="line"> 正常停止或关闭Nginx：</span><br><span class="line">nginx -s quit</span><br><span class="line"></span><br><span class="line"> 配置文件修改重装载命令：</span><br><span class="line">nginx -s reload</span><br><span class="line"></span><br><span class="line">查看端口运行状态：</span><br><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
+<h5 id="基础页面"><a href="#基础页面" class="headerlink" title="基础页面"></a>基础页面</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">业务展示的页面放在如 pages 文件及其子文件中(例如以下分类)</span><br><span class="line">pages</span><br><span class="line">  ——index</span><br><span class="line">  ——mall</span><br><span class="line">    ——goodList</span><br><span class="line">    ——goodDetail</span><br><span class="line">  ——order</span><br><span class="line">    ——orderList</span><br><span class="line">    ——orderDetail</span><br><span class="line">  ——mine</span><br><span class="line">    ——myInfo</span><br><span class="line">    ——myAddress</span><br><span class="line">    </span><br><span class="line">如有其他子业务，单独在pages里创建新的子级文件</span><br><span class="line">注释规范</span><br><span class="line">   针对wxml页面由上到下(或由左到右)分级的模块，均需注释出其功能，</span><br><span class="line">   并在其上下空出一行与其他代码进行区分。</span><br></pre></td></tr></table></figure>
 
-<p>运行程序<br>进入项目目录</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#确保已装flask</span><br><span class="line">pip install flask</span><br><span class="line">#运行程序</span><br><span class="line">python app.py</span><br></pre></td></tr></table></figure>
+<h5 id="样式文件"><a href="#样式文件" class="headerlink" title="样式文件"></a>样式文件</h5><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">基础样式文件，在最外层中创建(如：<span class="selector-tag">weui</span><span class="selector-class">.wxss</span>)</span><br><span class="line">第一步：写入公共样式：如 </span><br><span class="line">1.标题字体大小，描述字体大小等项目中一二三级字号；</span><br><span class="line">2.程序中所用的公共色值；</span><br><span class="line">3.布局方式<span class="selector-tag">flex</span>的横向布局，纵向布局等；</span><br><span class="line">4.公共布局中<span class="selector-tag">wxss</span>样式前缀统一(如<span class="selector-tag">weui-</span>开头)；</span><br><span class="line">等等</span><br><span class="line"></span><br><span class="line">第二步：在<span class="selector-tag">app</span><span class="selector-class">.wxss</span>文件最上部，引入 @<span class="keyword">import</span> <span class="string">"weui.wxss"</span>;</span><br><span class="line">以上公共样式便可全局使用</span><br><span class="line"><span class="selector-tag">wxss</span>规范</span><br><span class="line">    1<span class="selector-class">.wxss</span> 页面可使用快捷键真理代码(<span class="selector-tag">Shift</span>+<span class="selector-tag">Alt</span>+<span class="selector-tag">F</span>)</span><br><span class="line">    整理后代码有明显的代码缩进，对齐。每一个样式类之间空出一行；</span><br><span class="line"></span><br><span class="line">    2.在开发过程中<span class="selector-tag">rpx</span>和<span class="selector-tag">px</span>均可能用到，</span><br><span class="line">    如通常情况下间距使用<span class="selector-tag">rpx</span>，</span><br><span class="line">    字体大小和边框等使用<span class="selector-tag">px</span>，开发者根据实际情况而定；</span><br><span class="line">       </span><br><span class="line">    3.同一块的样式属性(如 <span class="selector-class">.order-title</span> 和 <span class="selector-class">.order-image</span>)放在一块；</span><br><span class="line">    </span><br><span class="line">    4<span class="selector-class">.wxss</span> 样式中同一块可以这样抒写(如 <span class="selector-class">.order</span><span class="selector-class">.title</span>)</span><br><span class="line">    意思是<span class="selector-class">.order</span>样式下的<span class="selector-class">.title</span>,</span><br><span class="line">    其他地方的class='title'不会引用到.order下的.title</span><br><span class="line">    </span><br><span class="line">    5<span class="selector-class">.wxss</span>样式之间用块状注释。请勿在代码后面直接注释。</span><br></pre></td></tr></table></figure>
 
-<p>————————————————</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>CentOS 7 安装 python3 v1.1</title>
-    <url>/2019/11/28/CentOS%207%20%E5%AE%89%E8%A3%85%20python3%20v1.1/</url>
-    <content><![CDATA[<h2 id="CentOS-7-安装-python3"><a href="#CentOS-7-安装-python3" class="headerlink" title="CentOS 7 安装 python3"></a>CentOS 7 安装 python3</h2><blockquote>
-<p>CentOS 7 自带的python为python2.7版本，yum等包依赖于python2，不可以直接卸载。需要下载python3的源码后自行编译安装。以下是安装步骤</p>
-</blockquote>
-<h4 id="1-安装用于编译python源码的依赖包"><a href="#1-安装用于编译python源码的依赖包" class="headerlink" title="1. 安装用于编译python源码的依赖包"></a>1. 安装用于编译python源码的依赖包</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc* make -y</span><br></pre></td></tr></table></figure>
+<h5 id="JS规范"><a href="#JS规范" class="headerlink" title="JS规范"></a>JS规范</h5><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">JS规范</span><br><span class="line">    <span class="number">1.</span>删除js文件中未用到的生命周期函数，保持代码的整洁</span><br><span class="line">    <span class="number">2.</span>右上角不要分享的页面，删除JS文件中该方法onShareAppMessage:function()</span><br><span class="line">    <span class="number">3.</span>采用ES6 关键字<span class="keyword">let</span>定义变量，尽量不使用<span class="keyword">var</span></span><br><span class="line">    <span class="number">4.</span>所有涉及到数据绑定的变量均需在data中初始化,禁止在不定义的情况下直接setData</span><br><span class="line">    <span class="number">5.</span>变量名以及函数名统一采用驼峰命名法(或下划线分割)</span><br><span class="line">    <span class="number">6.</span>正常情况下函数名前缀需加上清晰的动词表示函数功能(如getOderList)</span><br><span class="line">    <span class="number">7.</span>点击事件函数命名方式为 <span class="keyword">on</span> + 事件名 或者业务名</span><br><span class="line">    <span class="number">8.</span>JS语句无需以分号结束，统一省略分号</span><br><span class="line">    <span class="number">9.</span>JS中一致使用单引号<span class="string">' '</span> , WXML中一致使用双引号<span class="string">" "</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="2-安装下载源码的工具"><a href="#2-安装下载源码的工具" class="headerlink" title="2. 安装下载源码的工具"></a>2. 安装下载源码的工具</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install wget</span><br><span class="line"><span class="meta">#</span><span class="bash"> 由于还没有python3，这里的wget是安装到了python2.7中</span></span><br></pre></td></tr></table></figure>
+<h2 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h2><p>一个ES6的模块是一个包含了js代码的文件。<strong>ES6里没有所谓的module关键字，一个模块就是一个普通的脚本文件</strong>，除了以下两个区别：</p>
+<p>\1. ES6中的模块自动开启严格模式。<br>\2. 模块中可以使用import和export。</p>
+<p><strong>导入和导出</strong></p>
+<p>我们可以通过import和export关键字将函数或<strong>对象导入和导出模块</strong>。<br>先来说说export，在模块中声明的任何东西都是默认私有的，<strong>如果想对其他模块public，必须将那部分代码export</strong>。最简单的方法就是添加一个export关键字：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`// kittydar.js`</span><span class="string">`export `</span><span class="string">`function`</span> <span class="string">`detectCats(canvas, options) &#123;`</span><span class="string">`var`</span> <span class="string">`kittydar = `</span><span class="string">`new`</span> <span class="string">`Kittydar(options);`</span><span class="string">`return`</span> <span class="string">`kittydar.detectCats(canvas);`</span><span class="string">`&#125;`</span><span class="string">`export class Kittydar &#123;`</span><span class="string">`... several methods doing image processing ...`</span><span class="string">`&#125;`</span><span class="string">`// This helper function isn't exported.`</span><span class="string">`function`</span> <span class="string">`resizeCanvas() &#123;`</span><span class="string">`...`</span><span class="string">`&#125;`</span><span class="string">`...`</span></span><br></pre></td></tr></table></figure>
 
+<p>不再有跨文件或跨模块的全局变量，<strong>export声明的那部分就是这个模块的public API</strong>。而在另外一个文件中，我们可以导入这个模块并且使用detectCat方法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`// demo.js - Kittydar demo program`</span><span class="string">`import &#123;detectCats&#125; from `</span><span class="string">`"kittydar.js"`</span><span class="string">`;`</span><span class="string">`function`</span> <span class="string">`go() &#123;`</span><span class="string">`var`</span> <span class="string">`canvas = document.getElementById(`</span><span class="string">`"catpix"`</span><span class="string">`);`</span><span class="string">`var`</span> <span class="string">`cats = detectCats(canvas);`</span><span class="string">`drawRectangles(canvas, cats);`</span><span class="string">`&#125;`</span></span><br></pre></td></tr></table></figure>
 
+<p>如果需要导入多个模块中的接口，如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`import &#123;detectCats, Kittydar&#125; from `</span><span class="string">`"kittydar.js"`</span><span class="string">`;`</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="3-下载python源码"><a href="#3-下载python源码" class="headerlink" title="3. 下载python源码"></a>3. 下载python源码</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz</span><br></pre></td></tr></table></figure>
+<p>我们也可以通过一行代码将本模块所有需要public的方法公开：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`export &#123;detectCats, Kittydar&#125;;`</span></span><br></pre></td></tr></table></figure>
 
+<p>这样就不用一个个地添加export关键字了。</p>
+<p><strong>命名冲突</strong></p>
+<p>上面介绍了模块中的导入和导出，那么如果导入的变量名和模块中的变量名冲突了应该如何是好呢？放心，<strong>ES6允许我们为导入的内容重命名</strong>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`import &#123;flip as flipOmelet&#125; from `</span><span class="string">`"eggs.js"`</span><span class="string">`;`</span><span class="string">`import &#123;flip as flipHouse&#125; from `</span><span class="string">`"real-estate.js"`</span><span class="string">`;`</span></span><br></pre></td></tr></table></figure>
 
-
-<h4 id="4-编译"><a href="#4-编译" class="headerlink" title="4. 编译"></a>4. 编译</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">tar -xvJf Python-3.7.5.tar.xz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入解压后的目录，配置安装路径</span></span><br><span class="line">./configure prefix=/usr/local/python3</span><br><span class="line"><span class="meta">#</span><span class="bash"> 编译安装</span></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="5-添加软链接"><a href="#5-添加软链接" class="headerlink" title="5. 添加软链接"></a>5. 添加软链接</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加python3的软链接</span></span><br><span class="line">ln -s /usr/local/python3/bin/python3 /usr/bin/python3</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加pip3的软连接</span></span><br><span class="line">ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">测试是否安装成功了</span></span><br><span class="line">python3 -V</span><br></pre></td></tr></table></figure>
-
-
-
-
-<blockquote>
-<p>python指向的是python2，python2指向的是python2.7，在装完python3后，将python指向python3，然后python2指向python2.7，那么两个版本的python就能共存了</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /usr/bin/yum</span><br><span class="line">把#! /usr/bin/python修改为#! /usr/bin/python2</span><br><span class="line"></span><br><span class="line">vi /usr/libexec/urlgrabber-ext-down</span><br><span class="line">把#! /usr/bin/python 修改为#! /usr/bin/python2</span><br></pre></td></tr></table></figure>
-
-]]></content>
+<p>这样就将从eggs模块来的<strong>flip改为了flipOmelet</strong>，从real-estate模块来的<strong>flip改为了flipHouse</strong>，从而避免了冲突。</p>
+<p>同样的，我们也可以在模块导出变量名时进行重命名：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`function`</span> <span class="string">`v1() &#123; ... &#125;`</span><span class="string">`function`</span> <span class="string">`v2() &#123; ... &#125;`</span><span class="string">`export &#123;`</span><span class="string">`v1 as streamV1,`</span><span class="string">`v2 as streamV2,`</span><span class="string">`v2 as streamLatestVersion`</span><span class="string">`&#125;;`</span></span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>flask-socketio</title>
-    <url>/2019/11/28/flask-socketio/</url>
+    <url>/2018/12/09/flask-socketio/</url>
     <content><![CDATA[<!-- vim-markdown-toc GFM -->
 
 <ul>
@@ -478,8 +311,135 @@
 ]]></content>
   </entry>
   <entry>
+    <title>CentOS 7 安装 python3 v1.1</title>
+    <url>/2018/11/19/CentOS%207%20%E5%AE%89%E8%A3%85%20python3%20v1.1/</url>
+    <content><![CDATA[<h2 id="CentOS-7-安装-python3"><a href="#CentOS-7-安装-python3" class="headerlink" title="CentOS 7 安装 python3"></a>CentOS 7 安装 python3</h2><blockquote>
+<p>CentOS 7 自带的python为python2.7版本，yum等包依赖于python2，不可以直接卸载。需要下载python3的源码后自行编译安装。以下是安装步骤</p>
+</blockquote>
+<h4 id="1-安装用于编译python源码的依赖包"><a href="#1-安装用于编译python源码的依赖包" class="headerlink" title="1. 安装用于编译python源码的依赖包"></a>1. 安装用于编译python源码的依赖包</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc* make -y</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-安装下载源码的工具"><a href="#2-安装下载源码的工具" class="headerlink" title="2. 安装下载源码的工具"></a>2. 安装下载源码的工具</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install wget</span><br><span class="line"><span class="meta">#</span><span class="bash"> 由于还没有python3，这里的wget是安装到了python2.7中</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-下载python源码"><a href="#3-下载python源码" class="headerlink" title="3. 下载python源码"></a>3. 下载python源码</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-编译"><a href="#4-编译" class="headerlink" title="4. 编译"></a>4. 编译</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">tar -xvJf Python-3.7.5.tar.xz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入解压后的目录，配置安装路径</span></span><br><span class="line">./configure prefix=/usr/local/python3</span><br><span class="line"><span class="meta">#</span><span class="bash"> 编译安装</span></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-添加软链接"><a href="#5-添加软链接" class="headerlink" title="5. 添加软链接"></a>5. 添加软链接</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加python3的软链接</span></span><br><span class="line">ln -s /usr/local/python3/bin/python3 /usr/bin/python3</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加pip3的软连接</span></span><br><span class="line">ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">测试是否安装成功了</span></span><br><span class="line">python3 -V</span><br></pre></td></tr></table></figure>
+
+
+
+
+<blockquote>
+<p>python指向的是python2，python2指向的是python2.7，在装完python3后，将python指向python3，然后python2指向python2.7，那么两个版本的python就能共存了</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /usr/bin/yum</span><br><span class="line">把#! /usr/bin/python修改为#! /usr/bin/python2</span><br><span class="line"></span><br><span class="line">vi /usr/libexec/urlgrabber-ext-down</span><br><span class="line">把#! /usr/bin/python 修改为#! /usr/bin/python2</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>supervisor介绍</title>
+    <url>/2018/05/26/supervisor%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h1 id="supervisor介绍"><a href="#supervisor介绍" class="headerlink" title="supervisor介绍"></a>supervisor介绍</h1><h2 id="一、supervisor简介"><a href="#一、supervisor简介" class="headerlink" title="一、supervisor简介"></a>一、supervisor简介</h2><p>Supervisor是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。它是通过fork/exec的方式把这些被管理的进程当作supervisor的子进程来启动，这样只要在supervisor的配置文件中，把要管理的进程的可执行文件的路径写进去即可。也实现当子进程挂掉的时候，父进程可以准确获取子进程挂掉的信息的，可以选择是否自己启动和报警。supervisor还提供了一个功能，可以为supervisord或者每个子进程，设置一个非root的user，这个user就可以管理它对应的进程。</p>
+<h2 id="二、supervisor安装"><a href="#二、supervisor安装" class="headerlink" title="二、supervisor安装"></a>二、supervisor安装</h2><ol>
+<li><p>配置好yum源后，可以直接安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install supervisor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Debian/Ubuntu可通过apt安装</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">apt-<span class="keyword">get</span> install supervisor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>pip安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install supervisor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>easy_install安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">easy_install supervisor</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="三、supervisor使用"><a href="#三、supervisor使用" class="headerlink" title="三、supervisor使用"></a>三、supervisor使用</h2><h5 id="supervisor配置文件：-etc-supervisord-conf"><a href="#supervisor配置文件：-etc-supervisord-conf" class="headerlink" title="supervisor配置文件：/etc/supervisord.conf"></a>supervisor配置文件：<code>/etc/supervisord.conf</code></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*注：supervisor的配置文件默认是不全的，不过在大部分默认的情况下，上面说的基本功能已经满足。*</span><br></pre></td></tr></table></figure>
+
+<h5 id="子进程配置文件路径：-etc-supervisord-d"><a href="#子进程配置文件路径：-etc-supervisord-d" class="headerlink" title="子进程配置文件路径：/etc/supervisord.d/"></a>子进程配置文件路径：<code>/etc/supervisord.d/</code></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*注：默认子进程配置文件为ini格式，可在supervisor主配置文件中修改。*</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、配置文件说明"><a href="#四、配置文件说明" class="headerlink" title="四、配置文件说明"></a>四、配置文件说明</h2><h4 id="supervisor-conf配置文件说明："><a href="#supervisor-conf配置文件说明：" class="headerlink" title="supervisor.conf配置文件说明："></a>supervisor.conf配置文件说明：</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">[unix_http_server]</span><br><span class="line">file=/tmp/supervisor.sock   ;UNIX socket 文件，supervisorctl 会使用</span><br><span class="line">;chmod=<span class="number">0700</span>                 ;socket文件的mode，默认是<span class="number">0700</span></span><br><span class="line">;chown=nobody:nogroup       ;socket文件的owner，格式：uid:gid</span><br><span class="line"> </span><br><span class="line">;[inet_http_server]         ;HTTP服务器，提供web管理界面</span><br><span class="line">;port=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9001</span>        ;Web管理后台运行的IP和端口，如果开放到公网，需要注意安全性</span><br><span class="line">;username=user              ;登录管理后台的用户名</span><br><span class="line">;password=<span class="number">123</span>               ;登录管理后台的密码</span><br><span class="line"> </span><br><span class="line">[supervisord]</span><br><span class="line">logfile=/tmp/supervisord.<span class="built_in">log</span> ;日志文件，默认是 $CWD/supervisord.<span class="built_in">log</span></span><br><span class="line">logfile_maxbytes=<span class="number">50</span>MB        ;日志文件大小，超出会rotate，默认 <span class="number">50</span>MB，如果设成<span class="number">0</span>，表示不限制大小</span><br><span class="line">logfile_backups=<span class="number">10</span>           ;日志文件保留备份数量默认<span class="number">10</span>，设为<span class="number">0</span>表示不备份</span><br><span class="line">loglevel=info                ;日志级别，默认info，其它: debug,warn,trace</span><br><span class="line">pidfile=/tmp/supervisord.pid ;pid 文件</span><br><span class="line">nodaemon=<span class="literal">false</span>               ;是否在前台启动，默认是<span class="literal">false</span>，即以 daemon 的方式启动</span><br><span class="line">minfds=<span class="number">1024</span>                  ;可以打开的文件描述符的最小值，默认 <span class="number">1024</span></span><br><span class="line">minprocs=<span class="number">200</span>                 ;可以打开的进程数的最小值，默认 <span class="number">200</span></span><br><span class="line"> </span><br><span class="line">[supervisorctl]</span><br><span class="line">serverurl=unix:<span class="comment">///tmp/supervisor.sock ;通过UNIX socket连接supervisord，路径与unix_http_server部分的file一致</span></span><br><span class="line">;serverurl=http:<span class="comment">//127.0.0.1:9001 ; 通过HTTP的方式连接supervisord</span></span><br><span class="line"> </span><br><span class="line">; [program:xx]是被管理的进程配置参数，xx是进程的名称</span><br><span class="line">[program:xx]</span><br><span class="line">command=/opt/apache-tomcat<span class="number">-8.0</span><span class="number">.35</span>/bin/catalina.sh run  ; 程序启动命令</span><br><span class="line">autostart=<span class="literal">true</span>       ; 在supervisord启动的时候也自动启动</span><br><span class="line">startsecs=<span class="number">10</span>         ; 启动<span class="number">10</span>秒后没有异常退出，就表示进程正常启动了，默认为<span class="number">1</span>秒</span><br><span class="line">autorestart=<span class="literal">true</span>     ; 程序退出后自动重启,可选值：[unexpected,<span class="literal">true</span>,<span class="literal">false</span>]，默认为unexpected，表示进程意外杀死后才重启</span><br><span class="line">startretries=<span class="number">3</span>       ; 启动失败自动重试次数，默认是<span class="number">3</span></span><br><span class="line">user=tomcat          ; 用哪个用户启动进程，默认是root</span><br><span class="line">priority=<span class="number">999</span>         ; 进程启动优先级，默认<span class="number">999</span>，值小的优先启动</span><br><span class="line">redirect_stderr=<span class="literal">true</span> ; 把<span class="built_in">stderr</span>重定向到<span class="built_in">stdout</span>，默认<span class="literal">false</span></span><br><span class="line">stdout_logfile_maxbytes=<span class="number">20</span>MB  ; <span class="built_in">stdout</span> 日志文件大小，默认<span class="number">50</span>MB</span><br><span class="line">stdout_logfile_backups = <span class="number">20</span>   ; <span class="built_in">stdout</span> 日志文件备份数，默认是<span class="number">10</span></span><br><span class="line">; <span class="built_in">stdout</span> 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）</span><br><span class="line">stdout_logfile=/opt/apache-tomcat<span class="number">-8.0</span><span class="number">.35</span>/logs/catalina.out</span><br><span class="line">stopasgroup=<span class="literal">false</span>     ;默认为<span class="literal">false</span>,进程被杀死时，是否向这个进程组发送stop信号，包括子进程</span><br><span class="line">killasgroup=<span class="literal">false</span>     ;默认为<span class="literal">false</span>，向进程组发送kill信号，包括子进程</span><br><span class="line"> </span><br><span class="line">;包含其它配置文件</span><br><span class="line">[include]</span><br><span class="line">files = relative/directory<span class="comment">/*.ini    ;可以指定一个或多个以.ini结束的配置文件</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="子进程配置文件说明："><a href="#子进程配置文件说明：" class="headerlink" title="子进程配置文件说明："></a>子进程配置文件说明：</h4><p>给需要管理的子进程(程序)编写一个配置文件，放在<code>/etc/supervisor.d/</code>目录下，以<code>.ini</code>作为扩展名（每个进程的配置文件都可以单独分拆也可以把相关的脚本放一起）。如任意定义一个和脚本相关的项目名称的选项组（/etc/supervisord.d/test.conf）：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#项目名</span></span><br><span class="line">[<span class="symbol">program:</span>blog]</span><br><span class="line"><span class="comment">#脚本目录</span></span><br><span class="line">directory=<span class="regexp">/opt/bin</span></span><br><span class="line"><span class="comment">#脚本执行命令</span></span><br><span class="line">command=<span class="regexp">/usr/bin</span><span class="regexp">/python /opt</span><span class="regexp">/bin/test</span>.py</span><br><span class="line"></span><br><span class="line"><span class="comment">#supervisor启动的时候是否随着同时启动，默认True</span></span><br><span class="line">autostart=<span class="literal">true</span></span><br><span class="line"><span class="comment">#当程序exit的时候，这个program不会自动重启,默认unexpected，设置子进程挂掉后自动重启的情况，有三个选项，false,unexpected和true。如果为false的时候，无论什么情况下，都不会被重新启动，如果为unexpected，只有当进程的退出码不在下面的exitcodes里面定义的</span></span><br><span class="line">autorestart=<span class="literal">false</span></span><br><span class="line"><span class="comment">#这个选项是子进程启动多少秒之后，此时状态如果是running，则我们认为启动成功了。默认值为1</span></span><br><span class="line">startsecs=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#脚本运行的用户身份 </span></span><br><span class="line">user = test</span><br><span class="line"></span><br><span class="line"><span class="comment">#日志输出 </span></span><br><span class="line">stderr_logfile=<span class="regexp">/tmp/blog</span>_stderr.log </span><br><span class="line">stdout_logfile=<span class="regexp">/tmp/blog</span>_stdout.log </span><br><span class="line"><span class="comment">#把stderr重定向到stdout，默认 false</span></span><br><span class="line">redirect_stderr = <span class="literal">true</span></span><br><span class="line"><span class="comment">#stdout日志文件大小，默认 50MB</span></span><br><span class="line">stdout_logfile_maxbytes = <span class="number">20</span>M</span><br><span class="line"><span class="comment">#stdout日志文件备份数</span></span><br><span class="line">stdout_logfile_backups = <span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="子进程配置示例："><a href="#子进程配置示例：" class="headerlink" title="子进程配置示例："></a>子进程配置示例：</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#说明同上</span></span><br><span class="line">[program:<span class="built_in">test</span>] </span><br><span class="line">directory=/opt/bin </span><br><span class="line"><span class="built_in">command</span>=/opt/bin/<span class="built_in">test</span></span><br><span class="line">autostart=<span class="literal">true</span> </span><br><span class="line">autorestart=<span class="literal">false</span> </span><br><span class="line">stderr_logfile=/tmp/test_stderr.log </span><br><span class="line">stdout_logfile=/tmp/test_stdout.log </span><br><span class="line"><span class="comment">#user = test</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="五、supervisor命令说明"><a href="#五、supervisor命令说明" class="headerlink" title="五、supervisor命令说明"></a>五、supervisor命令说明</h2><h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">supervisorctl status        <span class="comment">//查看所有进程的状态</span></span><br><span class="line">supervisorctl stop es       <span class="comment">//停止es</span></span><br><span class="line">supervisorctl start es      <span class="comment">//启动es</span></span><br><span class="line">supervisorctl restart       <span class="comment">//重启es</span></span><br><span class="line">supervisorctl update        <span class="comment">//配置文件修改后使用该命令加载新的配置</span></span><br><span class="line">supervisorctl reload        <span class="comment">//重新启动配置中的所有程序</span></span><br></pre></td></tr></table></figure>
+
+<p>注：把<code>es</code>换成<code>all</code>可以管理配置中的所有进程。直接输入<code>supervisorctl</code>进入supervisorctl的shell交互界面，此时上面的命令不带supervisorctl可直接使用。</p>
+<h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><p>使用supervisor进程管理命令之前先启动supervisord，否则程序报错。<br> 使用命令<code>supervisord -c /etc/supervisord.conf</code>启动。<br> 若是centos7：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">systemctl start supervisord.service     <span class="comment">//启动supervisor并加载默认配置文件</span></span><br><span class="line">systemctl enable supervisord.service    <span class="comment">//将supervisor加入开机启动项</span></span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>选择在Linux下安装redis</title>
+    <url>/2018/04/19/%E9%80%89%E6%8B%A9%E5%9C%A8Linux%E4%B8%8B%E5%AE%89%E8%A3%85redis/</url>
+    <content><![CDATA[<p>选择在Linux下安装redis，</p>
+<p>1.安装gcc  redis是c语言编写的</p>
+<pre><code>yum install gcc-c++</code></pre><p>2.下载redis安装包,在root目录下执行</p>
+<pre><code>wget http://download.redis.io/releases/redis-5.0.4.tar.gz</code></pre><p>3.解压redis安装包</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxvf redis-5.0.4.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>4.进入redis目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd redis-5.0.4</span><br></pre></td></tr></table></figure>
+
+<p>5.编译</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>6.安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make PREFIX=/usr/local/redis install</span><br></pre></td></tr></table></figure>
+
+<p>7.拷贝redis.conf到安装目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp redis.conf /usr/local/redis</span><br></pre></td></tr></table></figure>
+
+<p>8.进入 /usr/local/redis目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /usr/local/redis/</span><br></pre></td></tr></table></figure>
+
+<p>9.编辑redis.conf   </p>
+<pre><code>vim redis.conf
+
+1.后台启动，daemonize yes
+
+2.绑定端口，port 6379 默认是6379 需要安全组开放端口
+
+3.绑定IP，bind 127.0.0.1:默认的
+
+4.指定数据存放路径，dir /usr/local/redis/log存放的路径
+
+5.指定持久化方式，appendonly yes
+
+6.requirepass redis129 设置密码</code></pre><p> 10.后端启动redis：</p>
+<pre><code>./bin/redis-server ./redis.conf</code></pre><p>11.查看是否启动成功：</p>
+<pre><code>ps aux | grep redis</code></pre><p>12.杀死redis并重新启动redis:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkill -9 redis-server</span><br><span class="line">./bin/redis-server ./redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>13.检测是否开启</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps axu | grep redis-server</span><br></pre></td></tr></table></figure>
+
+<p>14.客户端远程通过ip连接redis</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bin/redis-cli -h 127.0.0.1 -p 6379</span><br></pre></td></tr></table></figure>
+
+<p>如果出现如下，就是代表连接成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
     <title>使用Hexo搭建自己的个人博客</title>
-    <url>/2019/11/28/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <url>/2018/04/19/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h1 id="使用Hexo搭建自己的个人博客"><a href="#使用Hexo搭建自己的个人博客" class="headerlink" title="使用Hexo搭建自己的个人博客"></a>使用Hexo搭建自己的个人博客</h1><h2 id="从零开始搭建自己的静态博客"><a href="#从零开始搭建自己的静态博客" class="headerlink" title="从零开始搭建自己的静态博客"></a>从零开始搭建自己的静态博客</h2><h2 id="前提摘要"><a href="#前提摘要" class="headerlink" title="前提摘要"></a>前提摘要</h2><ol>
 <li><p>可能不需要会写多少代码，会照葫芦画瓢对一些地方进行修改就好。</p>
 </li>
@@ -610,48 +570,109 @@
 ]]></content>
   </entry>
   <entry>
-    <title>supervisor介绍</title>
-    <url>/2019/11/28/supervisor%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h1 id="supervisor介绍"><a href="#supervisor介绍" class="headerlink" title="supervisor介绍"></a>supervisor介绍</h1><h2 id="一、supervisor简介"><a href="#一、supervisor简介" class="headerlink" title="一、supervisor简介"></a>一、supervisor简介</h2><p>Supervisor是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。它是通过fork/exec的方式把这些被管理的进程当作supervisor的子进程来启动，这样只要在supervisor的配置文件中，把要管理的进程的可执行文件的路径写进去即可。也实现当子进程挂掉的时候，父进程可以准确获取子进程挂掉的信息的，可以选择是否自己启动和报警。supervisor还提供了一个功能，可以为supervisord或者每个子进程，设置一个非root的user，这个user就可以管理它对应的进程。</p>
-<h2 id="二、supervisor安装"><a href="#二、supervisor安装" class="headerlink" title="二、supervisor安装"></a>二、supervisor安装</h2><ol>
-<li><p>配置好yum源后，可以直接安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install supervisor</span><br></pre></td></tr></table></figure>
+    <title>rabbitmq原理及基础概念</title>
+    <url>/2018/04/11/rabbitmq%E5%8E%9F%E7%90%86%E5%8F%8A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h3 id="RabbitMQ简介"><a href="#RabbitMQ简介" class="headerlink" title="RabbitMQ简介"></a>RabbitMQ简介</h3><p>AMQP，即Advanced Message Queuing Protocol，高级消息队列协议，是应用层协议的一个开放标准，为面向消息的<a href="http://www.diggerplus.org/archives/tag/%e4%b8%ad%e9%97%b4%e4%bb%b6" target="_blank" rel="noopener">中间件</a>设计。消息中间件主要用于组件之间的解耦，消息的发送者无需知道消息使用者的存在，反之亦然。<br>AMQP的主要特征是面向消息、队列、路由（包括点对点和发布/订阅）、可靠性、安全。<br>RabbitMQ是一个开源的AMQP实现，服务器端用Erlang语言编写，支持多种客户端，如：Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP、STOMP等，支持AJAX。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。<br>下面将重点介绍RabbitMQ中的一些基础概念，了解了这些概念，是使用好RabbitMQ的基础。</p>
+<h3 id="ConnectionFactory、Connection、Channel"><a href="#ConnectionFactory、Connection、Channel" class="headerlink" title="ConnectionFactory、Connection、Channel"></a>ConnectionFactory、Connection、Channel</h3><p>ConnectionFactory、Connection、Channel都是RabbitMQ对外提供的API中最基本的对象。Connection是RabbitMQ的socket链接，它封装了socket协议相关部分逻辑。ConnectionFactory为Connection的制造工厂。<br>Channel是我们与RabbitMQ打交道的最重要的一个接口，我们大部分的业务操作是在Channel这个接口中完成的，包括定义Queue、定义Exchange、绑定Queue与Exchange、发布消息等。</p>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p>Queue（队列）是RabbitMQ的内部对象，用于存储消息，用下图表示。<br><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819103814085-804287529.png" alt="img"></p>
+<p>RabbitMQ中的消息都只能存储在Queue中，生产者（下图中的P）生产消息并最终投递到Queue中，消费者（下图中的C）可以从Queue中获取消息并消费。</p>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819103830954-867723738.png" alt="img"></p>
+<p>多个消费者可以订阅同一个Queue，这时Queue中的消息会被平均分摊给多个消费者进行处理，而不是每个消费者都收到所有的消息并处理。</p>
+<h3 id="Message-acknowledgment"><a href="#Message-acknowledgment" class="headerlink" title="Message acknowledgment"></a>Message acknowledgment</h3><p>在实际应用中，可能会发生消费者收到Queue中的消息，但没有处理完成就宕机（或出现其他意外）的情况，这种情况下就可能会导致消息丢失。为了避免这种情况发生，我们可以要求消费者在消费完消息后发送一个回执给RabbitMQ，RabbitMQ收到消息回执（Message acknowledgment）后才将该消息从Queue中移除；如果RabbitMQ没有收到回执并检测到消费者的RabbitMQ连接断开，则RabbitMQ会将该消息发送给其他消费者（如果存在多个消费者）进行处理。这里不存在timeout概念，一个消费者处理消息时间再长也不会导致该消息被发送给其他消费者，除非它的RabbitMQ连接断开。<br>这里会产生另外一个问题，如果我们的开发人员在处理完业务逻辑后，忘记发送回执给RabbitMQ，这将会导致严重的bug——Queue中堆积的消息会越来越多；消费者重启后会重复消费这些消息并重复执行业务逻辑…</p>
+<h3 id="Message-durability"><a href="#Message-durability" class="headerlink" title="Message durability"></a>Message durability</h3><p>如果我们希望即使在RabbitMQ服务重启的情况下，也不会丢失消息，我们可以将Queue与Message都设置为可持久化的（durable），这样可以保证绝大部分情况下我们的RabbitMQ消息不会丢失。但依然解决不了小概率丢失事件的发生（比如RabbitMQ服务器已经接收到生产者的消息，但还没来得及持久化该消息时RabbitMQ服务器就断电了），如果我们需要对这种小概率事件也要管理起来，那么我们要用到事务。由于这里仅为RabbitMQ的简单介绍，所以这里将不讲解RabbitMQ相关的事务。</p>
+<h3 id="Prefetch-count"><a href="#Prefetch-count" class="headerlink" title="Prefetch count"></a>Prefetch count</h3><p>前面我们讲到如果有多个消费者同时订阅同一个Queue中的消息，Queue中的消息会被平摊给多个消费者。这时如果每个消息的处理时间不同，就有可能会导致某些消费者一直在忙，而另外一些消费者很快就处理完手头工作并一直空闲的情况。我们可以通过设置prefetchCount来限制Queue每次发送给每个消费者的消息数，比如我们设置prefetchCount=1，则Queue每次给每个消费者发送一条消息；消费者处理完这条消息后Queue会再给该消费者发送一条消息。</p>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104007647-1027286628.png" alt="img"></p>
+<h3 id="Exchange"><a href="#Exchange" class="headerlink" title="Exchange"></a>Exchange</h3><p>在上一节我们看到生产者将消息投递到Queue中，实际上这在RabbitMQ中这种事情永远都不会发生。实际的情况是，生产者将消息发送到Exchange（交换器，下图中的X），由Exchange将消息路由到一个或多个Queue中（或者丢弃）。</p>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104028789-412276700.png" alt="img"></p>
+<p>Exchange是按照什么逻辑将消息路由到Queue的？这个将在Binding一节介绍。<br>RabbitMQ中的Exchange有四种类型，不同的类型有着不同的路由策略，这将在Exchange Types一节介绍。</p>
+<h3 id="routing-key"><a href="#routing-key" class="headerlink" title="routing key"></a>routing key</h3><p>生产者在将消息发送给Exchange的时候，一般会指定一个routing key，来指定这个消息的路由规则，而这个routing key需要与Exchange Type及binding key联合使用才能最终生效。<br>在Exchange Type与binding key固定的情况下（在正常使用时一般这些内容都是固定配置好的），我们的生产者就可以在发送消息给Exchange时，通过指定routing key来决定消息流向哪里。<br>RabbitMQ为routing key设定的长度限制为255 bytes。</p>
+<h3 id="Binding"><a href="#Binding" class="headerlink" title="Binding"></a>Binding</h3><p>RabbitMQ中通过Binding将Exchange与Queue关联起来，这样RabbitMQ就知道如何正确地将消息路由到指定的Queue了。<br><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104128931-1338459538.png" alt="img"></p>
+<h3 id="Binding-key"><a href="#Binding-key" class="headerlink" title="Binding key"></a>Binding key</h3><p>在绑定（Binding）Exchange与Queue的同时，一般会指定一个binding key；消费者将消息发送给Exchange时，一般会指定一个routing key；当binding key与routing key相匹配时，消息将会被路由到对应的Queue中。这个将在Exchange Types章节会列举实际的例子加以说明。<br>在绑定多个Queue到同一个Exchange的时候，这些Binding允许使用相同的binding key。<br>binding key 并不是在所有情况下都生效，它依赖于Exchange Type，比如fanout类型的Exchange就会无视binding key，而是将消息路由到所有绑定到该Exchange的Queue。</p>
+<h3 id="Exchange-Types"><a href="#Exchange-Types" class="headerlink" title="Exchange Types"></a>Exchange Types</h3><p>RabbitMQ常用的Exchange Type有fanout、direct、topic、headers这四种（AMQP规范里还提到两种Exchange Type，分别为system与自定义，这里不予以描述），下面分别进行介绍。</p>
+<h3 id="fanout"><a href="#fanout" class="headerlink" title="fanout"></a>fanout</h3><p>fanout类型的Exchange路由规则非常简单，它会把所有发送到该Exchange的消息路由到所有与它绑定的Queue中。<br><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104152177-2053988251.png" alt="img"></p>
+<p>上图中，生产者（P）发送到Exchange（X）的所有消息都会路由到图中的两个Queue，并最终被两个消费者（C1与C2）消费。</p>
+<h3 id="direct"><a href="#direct" class="headerlink" title="direct"></a>direct</h3><p>direct类型的Exchange路由规则也很简单，它会把消息路由到那些binding key与routing key完全匹配的Queue中。</p>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104210818-1771762193.png" alt="img"></p>
+<p>以上图的配置为例，我们以routingKey=”error”发送消息到Exchange，则消息会路由到Queue1（amqp.gen-S9b…，这是由RabbitMQ自动生成的Queue名称）和Queue2（amqp.gen-Agl…）；如果我们以routingKey=”info”或routingKey=”warning”来发送消息，则消息只会路由到Queue2。如果我们以其他routingKey发送消息，则消息不会路由到这两个Queue中。</p>
+<h3 id="topic"><a href="#topic" class="headerlink" title="topic"></a>topic</h3><p>前面讲到direct类型的Exchange路由规则是完全匹配binding key与routing key，但这种严格的匹配方式在很多情况下不能满足实际业务需求。topic类型的Exchange在匹配规则上进行了扩展，它与direct类型的Exchage相似，也是将消息路由到binding key与routing key相匹配的Queue中，但这里的匹配规则有些不同，它约定：</p>
+<ul>
+<li>routing key为一个句点号“. ”分隔的字符串（我们将被句点号“. ”分隔开的每一段独立的字符串称为一个单词），如“stock.usd.nyse”、“nyse.vmw”、“quick.orange.rabbit”</li>
+<li>binding key与routing key一样也是句点号“. ”分隔的字符串</li>
+<li>binding key中可以存在两种特殊字符“<em>”与“#”，用于做模糊匹配，其中“</em>”用于匹配一个单词，“#”用于匹配多个单词（可以是零个）</li>
+</ul>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104233644-253637000.png" alt="img"></p>
+<p>以上图中的配置为例，routingKey=”quick.orange.rabbit”的消息会同时路由到Q1与Q2，routingKey=”lazy.orange.fox”的消息会路由到Q1，routingKey=”lazy.brown.fox”的消息会路由到Q2，routingKey=”lazy.pink.rabbit”的消息会路由到Q2（只会投递给Q2一次，虽然这个routingKey与Q2的两个bindingKey都匹配）；routingKey=”quick.brown.fox”、routingKey=”orange”、routingKey=”quick.orange.male.rabbit”的消息将会被丢弃，因为它们没有匹配任何bindingKey。</p>
+<h3 id="headers"><a href="#headers" class="headerlink" title="headers"></a>headers</h3><p>headers类型的Exchange不依赖于routing key与binding key的匹配规则来路由消息，而是根据发送的消息内容中的headers属性进行匹配。<br>在绑定Queue与Exchange时指定一组键值对；当消息发送到Exchange时，RabbitMQ会取到该消息的headers（也是一个键值对的形式），对比其中的键值对是否完全匹配Queue与Exchange绑定时指定的键值对；如果完全匹配则消息会路由到该Queue，否则不会路由到该Queue。<br>该类型的Exchange没有用到过（不过也应该很有用武之地），所以不做介绍。</p>
+<h3 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h3><p>MQ本身是基于异步的消息处理，前面的示例中所有的生产者（P）将消息发送到RabbitMQ后不会知道消费者（C）处理成功或者失败（甚至连有没有消费者来处理这条消息都不知道）。<br>但实际的应用场景中，我们很可能需要一些同步处理，需要同步等待服务端将我的消息处理完成后再进行下一步处理。这相当于RPC（Remote Procedure Call，远程过程调用）。在RabbitMQ中也支持RPC。</p>
+<p><img src="https://img2018.cnblogs.com/blog/774371/201908/774371-20190819104253450-1490098886.png" alt="img"></p>
+<p>RabbitMQ中实现RPC的机制是：</p>
+<ul>
+<li>客户端发送请求（消息）时，在消息的属性（MessageProperties，在AMQP协议中定义了14中properties，这些属性会随着消息一起发送）中设置两个值replyTo（一个Queue名称，用于告诉服务器处理完成后将通知我的消息发送到这个Queue中）和correlationId（此次请求的标识号，服务器处理完成后需要将此属性返还，客户端将根据这个id了解哪条请求被成功执行了或执行失败）</li>
+<li>服务器端收到消息并处理</li>
+<li>服务器端处理完消息后，将生成一条应答消息到replyTo指定的Queue，同时带上correlationId属性</li>
+<li>客户端之前已订阅replyTo指定的Queue，从中收到服务器的应答消息后，根据其中的correlationId属性分析哪条请求被执行了，根据执行结果进行后续业务处理</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>UUID码</title>
+    <url>/2018/03/14/UUID%E7%A0%81/</url>
+    <content><![CDATA[<h3 id="UUID码"><a href="#UUID码" class="headerlink" title="UUID码"></a>UUID码</h3><blockquote>
+<p> UUID 是 通用唯一识别码（Universally Unique Identifier）的缩写，是一种软件建构的标准，亦为<a href="https://baike.baidu.com/item/开放软件基金会/1223731" target="_blank" rel="noopener">开放软件基金会</a>组织在<a href="https://baike.baidu.com/item/分布式计算/85448" target="_blank" rel="noopener">分布式计算</a>环境领域的一部分。其目的，是让分布式系统中的所有元素，都能有唯一的辨识信息，而不需要通过中央控制端来做辨识信息的指定。如此一来，每个人都可以创建不与其它人冲突的UUID。在这样的情况下，就不需考虑数据库创建时的名称重复问题。</p>
+</blockquote>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><p>UUID是指在一台机器上生成的数字，它保证对在同一时空中的所有机器都是唯一的。通常平台会提供生成的API。按照开放软件基金会(OSF)制定的标准计算，用到了以太网卡地址、纳秒级时间、芯片ID码和随机数。</p>
+<p>UUID由以下几部分的组合：</p>
+<p>（1）当前日期和时间，UUID的第一个部分与时间有关，如果你在生成一个UUID之后，过几秒又生成一个UUID，则第一个部分不同，其余相同。</p>
+<p>（2）时钟序列。</p>
+<p>（3）全局唯一的IEEE机器识别号，如果有网卡，从网卡MAC地址获得，没有网卡以其他方式获得。</p>
+<p>UUID的唯一缺陷在于<u>生成的结果串会比较长</u>。关于UUID这个标准使用最普遍的是微软的GUID(Globals Unique Identifiers)。在ColdFusion中可以用CreateUUID()函数很简单地生成UUID，其格式为：xxxxxxxx-xxxx- xxxx-xxxxxxxxxxxxxxxx(8-4-4-16)，其中每个 x 是 0-9 或 a-f 范围内的一个十六进制的数字。而标准的UUID格式为：xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)，可以从cflib 下载CreateGUID() UDF进行转换。</p>
+<hr>
+<p> python有一个模块叫做uuid，导入它就可以使用它的四个方法了。注意这四个方法依次是uuid1(),uuid3(),uuid4(),uuid5(),然而<strong>并没有uuid2()</strong></p>
+<ol>
+<li><p><strong>基于时间戳</strong><br> 使用主机ID, 序列号, 和当前时间来生成UUID, 可保证全球范围的唯一性. 但由于使用该方法生成的UUID中包含有主机的网络地址, 因此可能危及隐私.</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">    uuid.uuid1(node=<span class="literal">None</span>, clock_seq=<span class="literal">None</span>)</span><br><span class="line">In [<span class="number">1</span>]: uuid.uuid1()</span><br><span class="line">    Out[<span class="number">2</span>]: UUID(<span class="string">'bd6a74ec-f8ae-11e9-bad5-f8a2d6d4d3ac'</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p> 打断一下…</p>
+<p> 在<code>uuid3()</code> 和 <code>uuid5()</code> 两个方法里涉及到了一个 <code>namespace</code> 的参数，python提供了四种生成namespace的方法。</p>
+<blockquote>
+<p><code>uuid.NAMESPACE_DNS</code> : 指定此命名空间时，名称字符串是完全限定的域名</p>
+<p><code>uuid.NAMESPACE_URL</code>: 指定此命名空间时，名称字符串是URL</p>
+<p><code>uuid.NAMESPACE_OID</code>: 指定此命名空间时，名称字符串是ISO OID</p>
+<p><code>uuid.namespace_x500</code>:  the <em>name</em> string is an X.500 DN in DER or a text output format (咱也不懂，也不敢问)</p>
+</blockquote>
 </li>
-<li><p>Debian/Ubuntu可通过apt安装</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">apt-<span class="keyword">get</span> install supervisor</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>pip安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install supervisor</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>easy_install安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">easy_install supervisor</span><br></pre></td></tr></table></figure>
+</ol>
+<ol start="2">
+<li><p><strong>基于名字的MD5散列值</strong></p>
+<p>  通过计算命名空间和名字的MD5散列值来生成UUID, 可以保证同一命名空间中不同名字的唯一性和不同命名空间的唯一性, 但同一命名空间的同一名字生成的UUID相同 </p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">uuid.uuid3(namespace, name)</span><br><span class="line">In [<span class="number">9</span>]: uuid.uuid3(uuid.NAMESPACE_URL,<span class="string">'python.org'</span>)</span><br><span class="line">Out[<span class="number">9</span>]: UUID(<span class="string">'22fe6191-c161-3d86-a432-a81f343eda08'</span>)</span><br></pre></td></tr></table></figure>
 
 
 
 </li>
 </ol>
-<h2 id="三、supervisor使用"><a href="#三、supervisor使用" class="headerlink" title="三、supervisor使用"></a>三、supervisor使用</h2><h5 id="supervisor配置文件：-etc-supervisord-conf"><a href="#supervisor配置文件：-etc-supervisord-conf" class="headerlink" title="supervisor配置文件：/etc/supervisord.conf"></a>supervisor配置文件：<code>/etc/supervisord.conf</code></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*注：supervisor的配置文件默认是不全的，不过在大部分默认的情况下，上面说的基本功能已经满足。*</span><br></pre></td></tr></table></figure>
-
-<h5 id="子进程配置文件路径：-etc-supervisord-d"><a href="#子进程配置文件路径：-etc-supervisord-d" class="headerlink" title="子进程配置文件路径：/etc/supervisord.d/"></a>子进程配置文件路径：<code>/etc/supervisord.d/</code></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*注：默认子进程配置文件为ini格式，可在supervisor主配置文件中修改。*</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、配置文件说明"><a href="#四、配置文件说明" class="headerlink" title="四、配置文件说明"></a>四、配置文件说明</h2><h4 id="supervisor-conf配置文件说明："><a href="#supervisor-conf配置文件说明：" class="headerlink" title="supervisor.conf配置文件说明："></a>supervisor.conf配置文件说明：</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">[unix_http_server]</span><br><span class="line">file=/tmp/supervisor.sock   ;UNIX socket 文件，supervisorctl 会使用</span><br><span class="line">;chmod=<span class="number">0700</span>                 ;socket文件的mode，默认是<span class="number">0700</span></span><br><span class="line">;chown=nobody:nogroup       ;socket文件的owner，格式：uid:gid</span><br><span class="line"> </span><br><span class="line">;[inet_http_server]         ;HTTP服务器，提供web管理界面</span><br><span class="line">;port=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9001</span>        ;Web管理后台运行的IP和端口，如果开放到公网，需要注意安全性</span><br><span class="line">;username=user              ;登录管理后台的用户名</span><br><span class="line">;password=<span class="number">123</span>               ;登录管理后台的密码</span><br><span class="line"> </span><br><span class="line">[supervisord]</span><br><span class="line">logfile=/tmp/supervisord.<span class="built_in">log</span> ;日志文件，默认是 $CWD/supervisord.<span class="built_in">log</span></span><br><span class="line">logfile_maxbytes=<span class="number">50</span>MB        ;日志文件大小，超出会rotate，默认 <span class="number">50</span>MB，如果设成<span class="number">0</span>，表示不限制大小</span><br><span class="line">logfile_backups=<span class="number">10</span>           ;日志文件保留备份数量默认<span class="number">10</span>，设为<span class="number">0</span>表示不备份</span><br><span class="line">loglevel=info                ;日志级别，默认info，其它: debug,warn,trace</span><br><span class="line">pidfile=/tmp/supervisord.pid ;pid 文件</span><br><span class="line">nodaemon=<span class="literal">false</span>               ;是否在前台启动，默认是<span class="literal">false</span>，即以 daemon 的方式启动</span><br><span class="line">minfds=<span class="number">1024</span>                  ;可以打开的文件描述符的最小值，默认 <span class="number">1024</span></span><br><span class="line">minprocs=<span class="number">200</span>                 ;可以打开的进程数的最小值，默认 <span class="number">200</span></span><br><span class="line"> </span><br><span class="line">[supervisorctl]</span><br><span class="line">serverurl=unix:<span class="comment">///tmp/supervisor.sock ;通过UNIX socket连接supervisord，路径与unix_http_server部分的file一致</span></span><br><span class="line">;serverurl=http:<span class="comment">//127.0.0.1:9001 ; 通过HTTP的方式连接supervisord</span></span><br><span class="line"> </span><br><span class="line">; [program:xx]是被管理的进程配置参数，xx是进程的名称</span><br><span class="line">[program:xx]</span><br><span class="line">command=/opt/apache-tomcat<span class="number">-8.0</span><span class="number">.35</span>/bin/catalina.sh run  ; 程序启动命令</span><br><span class="line">autostart=<span class="literal">true</span>       ; 在supervisord启动的时候也自动启动</span><br><span class="line">startsecs=<span class="number">10</span>         ; 启动<span class="number">10</span>秒后没有异常退出，就表示进程正常启动了，默认为<span class="number">1</span>秒</span><br><span class="line">autorestart=<span class="literal">true</span>     ; 程序退出后自动重启,可选值：[unexpected,<span class="literal">true</span>,<span class="literal">false</span>]，默认为unexpected，表示进程意外杀死后才重启</span><br><span class="line">startretries=<span class="number">3</span>       ; 启动失败自动重试次数，默认是<span class="number">3</span></span><br><span class="line">user=tomcat          ; 用哪个用户启动进程，默认是root</span><br><span class="line">priority=<span class="number">999</span>         ; 进程启动优先级，默认<span class="number">999</span>，值小的优先启动</span><br><span class="line">redirect_stderr=<span class="literal">true</span> ; 把<span class="built_in">stderr</span>重定向到<span class="built_in">stdout</span>，默认<span class="literal">false</span></span><br><span class="line">stdout_logfile_maxbytes=<span class="number">20</span>MB  ; <span class="built_in">stdout</span> 日志文件大小，默认<span class="number">50</span>MB</span><br><span class="line">stdout_logfile_backups = <span class="number">20</span>   ; <span class="built_in">stdout</span> 日志文件备份数，默认是<span class="number">10</span></span><br><span class="line">; <span class="built_in">stdout</span> 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）</span><br><span class="line">stdout_logfile=/opt/apache-tomcat<span class="number">-8.0</span><span class="number">.35</span>/logs/catalina.out</span><br><span class="line">stopasgroup=<span class="literal">false</span>     ;默认为<span class="literal">false</span>,进程被杀死时，是否向这个进程组发送stop信号，包括子进程</span><br><span class="line">killasgroup=<span class="literal">false</span>     ;默认为<span class="literal">false</span>，向进程组发送kill信号，包括子进程</span><br><span class="line"> </span><br><span class="line">;包含其它配置文件</span><br><span class="line">[include]</span><br><span class="line">files = relative/directory<span class="comment">/*.ini    ;可以指定一个或多个以.ini结束的配置文件</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="子进程配置文件说明："><a href="#子进程配置文件说明：" class="headerlink" title="子进程配置文件说明："></a>子进程配置文件说明：</h4><p>给需要管理的子进程(程序)编写一个配置文件，放在<code>/etc/supervisor.d/</code>目录下，以<code>.ini</code>作为扩展名（每个进程的配置文件都可以单独分拆也可以把相关的脚本放一起）。如任意定义一个和脚本相关的项目名称的选项组（/etc/supervisord.d/test.conf）：</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#项目名</span></span><br><span class="line">[<span class="symbol">program:</span>blog]</span><br><span class="line"><span class="comment">#脚本目录</span></span><br><span class="line">directory=<span class="regexp">/opt/bin</span></span><br><span class="line"><span class="comment">#脚本执行命令</span></span><br><span class="line">command=<span class="regexp">/usr/bin</span><span class="regexp">/python /opt</span><span class="regexp">/bin/test</span>.py</span><br><span class="line"></span><br><span class="line"><span class="comment">#supervisor启动的时候是否随着同时启动，默认True</span></span><br><span class="line">autostart=<span class="literal">true</span></span><br><span class="line"><span class="comment">#当程序exit的时候，这个program不会自动重启,默认unexpected，设置子进程挂掉后自动重启的情况，有三个选项，false,unexpected和true。如果为false的时候，无论什么情况下，都不会被重新启动，如果为unexpected，只有当进程的退出码不在下面的exitcodes里面定义的</span></span><br><span class="line">autorestart=<span class="literal">false</span></span><br><span class="line"><span class="comment">#这个选项是子进程启动多少秒之后，此时状态如果是running，则我们认为启动成功了。默认值为1</span></span><br><span class="line">startsecs=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#脚本运行的用户身份 </span></span><br><span class="line">user = test</span><br><span class="line"></span><br><span class="line"><span class="comment">#日志输出 </span></span><br><span class="line">stderr_logfile=<span class="regexp">/tmp/blog</span>_stderr.log </span><br><span class="line">stdout_logfile=<span class="regexp">/tmp/blog</span>_stdout.log </span><br><span class="line"><span class="comment">#把stderr重定向到stdout，默认 false</span></span><br><span class="line">redirect_stderr = <span class="literal">true</span></span><br><span class="line"><span class="comment">#stdout日志文件大小，默认 50MB</span></span><br><span class="line">stdout_logfile_maxbytes = <span class="number">20</span>M</span><br><span class="line"><span class="comment">#stdout日志文件备份数</span></span><br><span class="line">stdout_logfile_backups = <span class="number">20</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="子进程配置示例："><a href="#子进程配置示例：" class="headerlink" title="子进程配置示例："></a>子进程配置示例：</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#说明同上</span></span><br><span class="line">[program:<span class="built_in">test</span>] </span><br><span class="line">directory=/opt/bin </span><br><span class="line"><span class="built_in">command</span>=/opt/bin/<span class="built_in">test</span></span><br><span class="line">autostart=<span class="literal">true</span> </span><br><span class="line">autorestart=<span class="literal">false</span> </span><br><span class="line">stderr_logfile=/tmp/test_stderr.log </span><br><span class="line">stdout_logfile=/tmp/test_stdout.log </span><br><span class="line"><span class="comment">#user = test</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p><strong>基于随机数</strong> </p>
+<p>通过随机数来生成UUID. 使用的是伪随机数有一定的重复概率 </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">10</span>]: uuid.uuid4()</span><br><span class="line">Out[<span class="number">10</span>]: UUID(<span class="string">'0faccaf9-d093-41c9-ac18-1cee7dcf4c72'</span>)</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="五、supervisor命令说明"><a href="#五、supervisor命令说明" class="headerlink" title="五、supervisor命令说明"></a>五、supervisor命令说明</h2><h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">supervisorctl status        <span class="comment">//查看所有进程的状态</span></span><br><span class="line">supervisorctl stop es       <span class="comment">//停止es</span></span><br><span class="line">supervisorctl start es      <span class="comment">//启动es</span></span><br><span class="line">supervisorctl restart       <span class="comment">//重启es</span></span><br><span class="line">supervisorctl update        <span class="comment">//配置文件修改后使用该命令加载新的配置</span></span><br><span class="line">supervisorctl reload        <span class="comment">//重新启动配置中的所有程序</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li><p><strong>基于名字的SHA-1散列值</strong> </p>
+<p>算法与 <code>uuid3()</code> 相同</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">11</span>]: uuid.uuid5(uuid.NAMESPACE_URL,<span class="string">'python.org'</span>)</span><br><span class="line">Out[<span class="number">11</span>]: UUID(<span class="string">'7af94e2b-4dd9-50f0-9c9a-8a48519bdef0'</span>)</span><br></pre></td></tr></table></figure>
 
-<p>注：把<code>es</code>换成<code>all</code>可以管理配置中的所有进程。直接输入<code>supervisorctl</code>进入supervisorctl的shell交互界面，此时上面的命令不带supervisorctl可直接使用。</p>
-<h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><p>使用supervisor进程管理命令之前先启动supervisord，否则程序报错。<br> 使用命令<code>supervisord -c /etc/supervisord.conf</code>启动。<br> 若是centos7：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">systemctl start supervisord.service     <span class="comment">//启动supervisor并加载默认配置文件</span></span><br><span class="line">systemctl enable supervisord.service    <span class="comment">//将supervisor加入开机启动项</span></span><br></pre></td></tr></table></figure>]]></content>
+</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>git服务搭建</title>
-    <url>/2019/11/28/git%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</url>
+    <url>/2017/08/21/git%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h1 id="创建用户账号"><a href="#创建用户账号" class="headerlink" title="创建用户账号"></a>创建用户账号</h1><p>添加用户： useradd  test_user</p>
 <p>设置密码： passwd test_user </p>
 <p>登录： ssh <a href="mailto:test_user@62.234.92.111" target="_blank" rel="noopener">test_user@62.234.92.111</a>          命令格式：     ssh    用户名@ip地址</p>
@@ -689,45 +710,37 @@
 ]]></content>
   </entry>
   <entry>
-    <title>微信小程序代码规范</title>
-    <url>/2019/11/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</url>
-    <content><![CDATA[<h5 id="微信小程序里的四种文件"><a href="#微信小程序里的四种文件" class="headerlink" title="微信小程序里的四种文件"></a>微信小程序里的四种文件</h5><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.json</span> 后缀的 <span class="selector-tag">JSON</span> 配置文件</span><br><span class="line"><span class="selector-class">.wxml</span> 后缀的 <span class="selector-tag">WXML</span> 模板文件</span><br><span class="line"><span class="selector-class">.wxss</span> 后缀的 <span class="selector-tag">WXSS</span> 样式文件</span><br><span class="line"><span class="selector-class">.js</span> 后缀的 <span class="selector-tag">JS</span> 脚本逻辑文件</span><br></pre></td></tr></table></figure>
+    <title>git bush 中的一些项目操作</title>
+    <url>/2017/05/29/git%20bush%20%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E9%A1%B9%E7%9B%AE%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="git-bush-中的一些项目操作"><a href="#git-bush-中的一些项目操作" class="headerlink" title="git bush 中的一些项目操作"></a>git bush 中的一些项目操作</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// 创建功能分支</span><br><span class="line">git flow feature start 分支名称</span><br><span class="line">// 推送远程仓库留档</span><br><span class="line">git flow feature publish 分支名称</span><br><span class="line">// 完成并保存本地分支</span><br><span class="line">git flow feature finish -k 分支名称</span><br><span class="line">// 合并功能分支到dev</span><br><span class="line">git checkout develop // 切换分支</span><br><span class="line">git pull origin develop // 更新远端仓库至本地</span><br><span class="line">git merge feature/分支名  // 合并至dev分支</span><br><span class="line">git push origin develop // 推送远端仓库</span><br><span class="line"></span><br><span class="line">// other opt</span><br><span class="line">git push origin --delete 分支名称 // 删除远端仓库分支</span><br><span class="line">git branch -d/-D(强制删除) 分支名称 // 删除本地仓库分支</span><br></pre></td></tr></table></figure>
 
-<h5 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h5><figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="meta">### 图片资源</span></span><br><span class="line">目前图片资源的主要性能问题在于大图片和长列表图片上，</span><br><span class="line">这两种情况都有可能导致 iOS 客户端内存占用上升，</span><br><span class="line">从而触发系统回收小程序页面。</span><br><span class="line"><span class="meta">### 图片对内存的影响</span></span><br><span class="line">在 iOS 上，小程序的页面是由多个 <span class="built_in">WKWebView</span> 组成的，</span><br><span class="line">在系统内存紧张时，会回收掉一部分 <span class="built_in">WKWebView</span>。</span><br><span class="line">从过去我们分析的案例来看，大图片和长列表图片的使用会引起 <span class="built_in">WKWebView</span> 的回收。</span><br><span class="line"><span class="meta">### 图片对页面切换的影响</span></span><br><span class="line">除了内存问题外，大图片也会造成页面切换的卡顿。</span><br><span class="line">我们分析过的案例中，有一部分小程序会在页面中引用大图片，</span><br><span class="line">在页面后退切换中会出现掉帧卡顿的情况。</span><br><span class="line">当前我们建议开发者尽量减少使用大图片资源。</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>生成随机字符串</title>
+    <url>/2016/11/05/%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h3 id="生成随机字符串"><a href="#生成随机字符串" class="headerlink" title="生成随机字符串"></a>生成随机字符串</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法一</span></span><br><span class="line">tmp = os.urandom(<span class="number">44</span>)</span><br><span class="line">secret_key = base64.b64encode(tmp)</span><br><span class="line">print(secret_key)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_random_secret_key</span><span class="params">(length=<span class="number">12</span>, allowed_chars=None, secret_key=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    生成随机字符串</span></span><br><span class="line"><span class="string">    :param length: 随机字符串长度</span></span><br><span class="line"><span class="string">    :param allowed_chars: 随机字符串字符取值范围</span></span><br><span class="line"><span class="string">    :param secret_key: 生成随机字符串的随机字符串</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> secret_key <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        secret_key = <span class="string">"n&amp;^-9#k*-6pwzsjt-qsc@s3$l46k(7e%f80e7gx^f#vouf3yvz"</span></span><br><span class="line">    <span class="keyword">if</span> allowed_chars <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        allowed_chars = <span class="string">'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)'</span></span><br><span class="line"></span><br><span class="line">    random.seed(</span><br><span class="line">        hashlib.sha256(</span><br><span class="line">            (<span class="string">"%s%s%s"</span> % (</span><br><span class="line">                random.getstate(),</span><br><span class="line">                time.time(),</span><br><span class="line">                secret_key)).encode(<span class="string">'utf-8'</span>)</span><br><span class="line">        ).digest())</span><br><span class="line">    ret = <span class="string">''</span>.join(random.choice(allowed_chars) <span class="keyword">for</span> i <span class="keyword">in</span> range(length))</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>flask在服务器上运行</title>
+    <url>/2016/10/10/flask%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C/</url>
+    <content><![CDATA[<p>1.上传项目<br>将项目文件使用Xftp上传至某目录下</p>
+<p>2.修改nginx配置文件<br>在/etc/nginx/conf.d/文件夹下找到其配置文件<br>添加nginx 需要监听的端口信息<br>末尾添加类似代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 8001;</span><br><span class="line">    #主机公网IP</span><br><span class="line">    server_name instagram.zhyh2010.com;</span><br><span class="line">    location /&#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8000;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="资源文件"><a href="#资源文件" class="headerlink" title="资源文件"></a>资源文件</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">所有资源文件(如图片)放在统一文件下及其子文件中(例如以下分类)</span><br><span class="line">resource</span><br><span class="line">  ——<span class="keyword">public</span></span><br><span class="line">  ——tab</span><br><span class="line">  ——home</span><br><span class="line">  ——mine</span><br></pre></td></tr></table></figure>
+<p>实际上， 我们将外部通过 8001 端口发送过来的请求， 代理给了 127.0.0.1:8000 也就是我们的 flask 项目</p>
+<p>3.配置文件修改重装载</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
 
-<h5 id="基础页面"><a href="#基础页面" class="headerlink" title="基础页面"></a>基础页面</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">业务展示的页面放在如 pages 文件及其子文件中(例如以下分类)</span><br><span class="line">pages</span><br><span class="line">  ——index</span><br><span class="line">  ——mall</span><br><span class="line">    ——goodList</span><br><span class="line">    ——goodDetail</span><br><span class="line">  ——order</span><br><span class="line">    ——orderList</span><br><span class="line">    ——orderDetail</span><br><span class="line">  ——mine</span><br><span class="line">    ——myInfo</span><br><span class="line">    ——myAddress</span><br><span class="line">    </span><br><span class="line">如有其他子业务，单独在pages里创建新的子级文件</span><br><span class="line">注释规范</span><br><span class="line">   针对wxml页面由上到下(或由左到右)分级的模块，均需注释出其功能，</span><br><span class="line">   并在其上下空出一行与其他代码进行区分。</span><br></pre></td></tr></table></figure>
+<p>附Nginx操作代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#重启服务：</span><br><span class="line">service nginx restart</span><br><span class="line"></span><br><span class="line">#快速停止或关闭Nginx：</span><br><span class="line">nginx -s stop</span><br><span class="line"></span><br><span class="line"> 正常停止或关闭Nginx：</span><br><span class="line">nginx -s quit</span><br><span class="line"></span><br><span class="line"> 配置文件修改重装载命令：</span><br><span class="line">nginx -s reload</span><br><span class="line"></span><br><span class="line">查看端口运行状态：</span><br><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
 
-<h5 id="样式文件"><a href="#样式文件" class="headerlink" title="样式文件"></a>样式文件</h5><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">基础样式文件，在最外层中创建(如：<span class="selector-tag">weui</span><span class="selector-class">.wxss</span>)</span><br><span class="line">第一步：写入公共样式：如 </span><br><span class="line">1.标题字体大小，描述字体大小等项目中一二三级字号；</span><br><span class="line">2.程序中所用的公共色值；</span><br><span class="line">3.布局方式<span class="selector-tag">flex</span>的横向布局，纵向布局等；</span><br><span class="line">4.公共布局中<span class="selector-tag">wxss</span>样式前缀统一(如<span class="selector-tag">weui-</span>开头)；</span><br><span class="line">等等</span><br><span class="line"></span><br><span class="line">第二步：在<span class="selector-tag">app</span><span class="selector-class">.wxss</span>文件最上部，引入 @<span class="keyword">import</span> <span class="string">"weui.wxss"</span>;</span><br><span class="line">以上公共样式便可全局使用</span><br><span class="line"><span class="selector-tag">wxss</span>规范</span><br><span class="line">    1<span class="selector-class">.wxss</span> 页面可使用快捷键真理代码(<span class="selector-tag">Shift</span>+<span class="selector-tag">Alt</span>+<span class="selector-tag">F</span>)</span><br><span class="line">    整理后代码有明显的代码缩进，对齐。每一个样式类之间空出一行；</span><br><span class="line"></span><br><span class="line">    2.在开发过程中<span class="selector-tag">rpx</span>和<span class="selector-tag">px</span>均可能用到，</span><br><span class="line">    如通常情况下间距使用<span class="selector-tag">rpx</span>，</span><br><span class="line">    字体大小和边框等使用<span class="selector-tag">px</span>，开发者根据实际情况而定；</span><br><span class="line">       </span><br><span class="line">    3.同一块的样式属性(如 <span class="selector-class">.order-title</span> 和 <span class="selector-class">.order-image</span>)放在一块；</span><br><span class="line">    </span><br><span class="line">    4<span class="selector-class">.wxss</span> 样式中同一块可以这样抒写(如 <span class="selector-class">.order</span><span class="selector-class">.title</span>)</span><br><span class="line">    意思是<span class="selector-class">.order</span>样式下的<span class="selector-class">.title</span>,</span><br><span class="line">    其他地方的class='title'不会引用到.order下的.title</span><br><span class="line">    </span><br><span class="line">    5<span class="selector-class">.wxss</span>样式之间用块状注释。请勿在代码后面直接注释。</span><br></pre></td></tr></table></figure>
+<p>运行程序<br>进入项目目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#确保已装flask</span><br><span class="line">pip install flask</span><br><span class="line">#运行程序</span><br><span class="line">python app.py</span><br></pre></td></tr></table></figure>
 
-<h5 id="JS规范"><a href="#JS规范" class="headerlink" title="JS规范"></a>JS规范</h5><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">JS规范</span><br><span class="line">    <span class="number">1.</span>删除js文件中未用到的生命周期函数，保持代码的整洁</span><br><span class="line">    <span class="number">2.</span>右上角不要分享的页面，删除JS文件中该方法onShareAppMessage:function()</span><br><span class="line">    <span class="number">3.</span>采用ES6 关键字<span class="keyword">let</span>定义变量，尽量不使用<span class="keyword">var</span></span><br><span class="line">    <span class="number">4.</span>所有涉及到数据绑定的变量均需在data中初始化,禁止在不定义的情况下直接setData</span><br><span class="line">    <span class="number">5.</span>变量名以及函数名统一采用驼峰命名法(或下划线分割)</span><br><span class="line">    <span class="number">6.</span>正常情况下函数名前缀需加上清晰的动词表示函数功能(如getOderList)</span><br><span class="line">    <span class="number">7.</span>点击事件函数命名方式为 <span class="keyword">on</span> + 事件名 或者业务名</span><br><span class="line">    <span class="number">8.</span>JS语句无需以分号结束，统一省略分号</span><br><span class="line">    <span class="number">9.</span>JS中一致使用单引号<span class="string">' '</span> , WXML中一致使用双引号<span class="string">" "</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h2><p>一个ES6的模块是一个包含了js代码的文件。<strong>ES6里没有所谓的module关键字，一个模块就是一个普通的脚本文件</strong>，除了以下两个区别：</p>
-<p>\1. ES6中的模块自动开启严格模式。<br>\2. 模块中可以使用import和export。</p>
-<p><strong>导入和导出</strong></p>
-<p>我们可以通过import和export关键字将函数或<strong>对象导入和导出模块</strong>。<br>先来说说export，在模块中声明的任何东西都是默认私有的，<strong>如果想对其他模块public，必须将那部分代码export</strong>。最简单的方法就是添加一个export关键字：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`// kittydar.js`</span><span class="string">`export `</span><span class="string">`function`</span> <span class="string">`detectCats(canvas, options) &#123;`</span><span class="string">`var`</span> <span class="string">`kittydar = `</span><span class="string">`new`</span> <span class="string">`Kittydar(options);`</span><span class="string">`return`</span> <span class="string">`kittydar.detectCats(canvas);`</span><span class="string">`&#125;`</span><span class="string">`export class Kittydar &#123;`</span><span class="string">`... several methods doing image processing ...`</span><span class="string">`&#125;`</span><span class="string">`// This helper function isn't exported.`</span><span class="string">`function`</span> <span class="string">`resizeCanvas() &#123;`</span><span class="string">`...`</span><span class="string">`&#125;`</span><span class="string">`...`</span></span><br></pre></td></tr></table></figure>
-
-<p>不再有跨文件或跨模块的全局变量，<strong>export声明的那部分就是这个模块的public API</strong>。而在另外一个文件中，我们可以导入这个模块并且使用detectCat方法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`// demo.js - Kittydar demo program`</span><span class="string">`import &#123;detectCats&#125; from `</span><span class="string">`"kittydar.js"`</span><span class="string">`;`</span><span class="string">`function`</span> <span class="string">`go() &#123;`</span><span class="string">`var`</span> <span class="string">`canvas = document.getElementById(`</span><span class="string">`"catpix"`</span><span class="string">`);`</span><span class="string">`var`</span> <span class="string">`cats = detectCats(canvas);`</span><span class="string">`drawRectangles(canvas, cats);`</span><span class="string">`&#125;`</span></span><br></pre></td></tr></table></figure>
-
-<p>如果需要导入多个模块中的接口，如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`import &#123;detectCats, Kittydar&#125; from `</span><span class="string">`"kittydar.js"`</span><span class="string">`;`</span></span><br></pre></td></tr></table></figure>
-
-<p>我们也可以通过一行代码将本模块所有需要public的方法公开：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`export &#123;detectCats, Kittydar&#125;;`</span></span><br></pre></td></tr></table></figure>
-
-<p>这样就不用一个个地添加export关键字了。</p>
-<p><strong>命名冲突</strong></p>
-<p>上面介绍了模块中的导入和导出，那么如果导入的变量名和模块中的变量名冲突了应该如何是好呢？放心，<strong>ES6允许我们为导入的内容重命名</strong>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`import &#123;flip as flipOmelet&#125; from `</span><span class="string">`"eggs.js"`</span><span class="string">`;`</span><span class="string">`import &#123;flip as flipHouse&#125; from `</span><span class="string">`"real-estate.js"`</span><span class="string">`;`</span></span><br></pre></td></tr></table></figure>
-
-<p>这样就将从eggs模块来的<strong>flip改为了flipOmelet</strong>，从real-estate模块来的<strong>flip改为了flipHouse</strong>，从而避免了冲突。</p>
-<p>同样的，我们也可以在模块导出变量名时进行重命名：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`function`</span> <span class="string">`v1() &#123; ... &#125;`</span><span class="string">`function`</span> <span class="string">`v2() &#123; ... &#125;`</span><span class="string">`export &#123;`</span><span class="string">`v1 as streamV1,`</span><span class="string">`v2 as streamV2,`</span><span class="string">`v2 as streamLatestVersion`</span><span class="string">`&#125;;`</span></span><br></pre></td></tr></table></figure>]]></content>
+<p>————————————————</p>
+]]></content>
   </entry>
   <entry>
     <title>python开发规范</title>

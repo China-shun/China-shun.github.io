@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Shun">
+    
+    <meta name="description" content="Clang Shun的博客，学习只要够专一、努力，那么一定会成功">
+    
+    
+    
+    
+    
+    
+    <title>使用Hexo搭建自己的个人博客 | 铿锵小顺的博客</title>
+    <link href="http://yoursite.com" rel="prefetch" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg,preview5.jpg,preview6.jpg,preview7.jpg,preview8.jpg,preview9.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="http://yoursite.com">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">铿锵小顺的博客</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="">
+                    <a href="/tags">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="http://yoursite.com">铿锵小顺的博客</a>
+        >
+        <span>使用Hexo搭建自己的个人博客</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2018/04/19/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">使用Hexo搭建自己的个人博客</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-04-19
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/04/19/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">使用Hexo搭建自己的个人博客</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-04-19
+            </p>
+            <p>
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h1 id="使用Hexo搭建自己的个人博客"><a href="#使用Hexo搭建自己的个人博客" class="headerlink" title="使用Hexo搭建自己的个人博客"></a>使用Hexo搭建自己的个人博客</h1><h2 id="从零开始搭建自己的静态博客"><a href="#从零开始搭建自己的静态博客" class="headerlink" title="从零开始搭建自己的静态博客"></a>从零开始搭建自己的静态博客</h2><h2 id="前提摘要"><a href="#前提摘要" class="headerlink" title="前提摘要"></a>前提摘要</h2><ol>
+<li><p>可能不需要会写多少代码，会照葫芦画瓢对一些地方进行修改就好。</p>
+</li>
+<li><p>安装node.js npm 了解基础知识 个人觉得不了解好像也没什么问题，跟着装就好了。然后就了解了啊。</p>
+</li>
+<li><p>安装git 可以不知道git是什么 hexo配合github搭建博客会用到四个常用的命令 到时候掌握了这四个命令的作用就行了</p>
+</li>
+<li><p>有一个github账号 和其他账号的注册没有什么区别。用github作为服务器使用。</p>
+<ul>
+<li>注册地址：<a href="https://github.com/" target="_blank" rel="noopener" github地址"">github地址</a> </li>
+</ul>
+</li>
+<li><p>会markdown就好，不会也没关系，现学也可以很快掌握。</p>
+<ul>
+<li>推荐markdown编辑器：<strong>typora</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h3><h4 id="1-1-安装node-js"><a href="#1-1-安装node-js" class="headerlink" title="1.1 安装node.js"></a>1.1 安装node.js</h4><p>下载地址如下：<a href="http://nodejs.cn/download/,' target=" _blank" rel="noopener" node.js下载地址'">node.js下载</a></p>
+<p>下载自己所需要的版本，与安装普通软件没有任何区别。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-e801cad5c7ac29dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>安装node.js</p>
+<p>检查一下是否安装成功</p>
+<p>windows系统下快捷键win+r 输入cmd</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-fb00e279ad960100.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/646/format/webp" alt="img"></p>
+<p>打开终端</p>
+<p>在终端输入 npm -v 显示版本号则为安装成功 版本号不用和我的一样</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-fd4c2c6f6d8482ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/852/format/webp" alt="img"></p>
+<h4 id="1-2-安装git"><a href="#1-2-安装git" class="headerlink" title="1.2 安装git"></a>1.2 安装git</h4><p>下载地址及安装方法如下：<a href="https://git-scm.com/book/zh/v1/起步-安装-Git" target="_blank" rel="noopener">git安装</a> 安装地址和方法这里都有说了</p>
+<p>git安装 过程 <a href="https://blog.csdn.net/qq_41782425/article/details/85183250" target="_blank" rel="noopener">https://blog.csdn.net/qq_41782425/article/details/85183250</a></p>
+<p>若是安装成功 鼠标右键会出现这俩图表</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-9b846e0c0d9a36cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/266/format/webp" alt="img"></p>
+<p>git安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这两个是必备的工具 一定要安装上才行</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、创建库"><a href="#二、创建库" class="headerlink" title="二、创建库"></a>二、创建库</h3><h4 id="2-1注册gitbub账号"><a href="#2-1注册gitbub账号" class="headerlink" title="2.1注册gitbub账号"></a>2.1注册gitbub账号</h4><p>本来不想从注册开始写的…然后想了想不能做一个标题党，所以真的从零开始哦。</p>
+<p><strong>① 输入地址 点击注册</strong></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-ad94a5bfcd8e08ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>github注册地址</p>
+<p><strong>② 填写表单</strong></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-660b8360cc189692.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>填写表单</p>
+<p><strong>③ 继续 账号也就有了</strong></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-8ff40dc12c6fe5ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>注册</p>
+<h4 id="2-2-建立仓库"><a href="#2-2-建立仓库" class="headerlink" title="2.2 建立仓库"></a>2.2 建立仓库</h4><p><strong>① 新建项目</strong></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-41d7fb68fec46d06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>新建项目</p>
+<p><strong>② 上邮箱里验证一下</strong></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-4f4802e0b3cf5cc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>验证</p>
+<p><strong>③新建项目</strong></p>
+<p>新建一个名为<code>你的用户名.github.io</code>的仓库，例如，你的github用户名为user，就新建一个名为<code>user.github.io</code>的仓库（强制要求哦），将来你的网站访问地址就为：<a href="http://user.github.io/" target="_blank" rel="noopener">http://user.github.io</a> 并且一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。 </p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-93f26bbcd60d6d53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>项目命名</p>
+<h4 id="2-4-配置SSH-KEY"><a href="#2-4-配置SSH-KEY" class="headerlink" title="2.4 配置SSH KEY"></a>2.4 配置SSH KEY</h4><p>我们到时候会把本地的代码提交到github上，这一步就是配置权限，解决本地和服务器的链接问题</p>
+<p><strong>① 鼠标右键git bash here</strong></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-08490aec3bed2a3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/267/format/webp" alt="img"></p>
+<p>配置步骤1</p>
+<p><strong>②打开git bash，就是一个linux命令窗口</strong></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-4c4695a3381570a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>配置步骤2</p>
+<p><strong>③创建SSH keys</strong></p>
+<blockquote>
+<p>在bash中输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;shaoshanhuan@163.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后无脑回车~</p>
+</blockquote>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-89919b214d8343e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>配置成功</p>
+<p><strong>④复制keys</strong></p>
+<p>进入生成的ssh目录 : C:\users(中文是用户)\你电脑的用户名 .ssh 中, 使用记事本打开 id_rsa.pub 文件, 将该文件中的内容复制</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-51cf57860d9e1613.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>复制keys</p>
+<p><strong>⑤复制id_rsa.pub里面的内容</strong></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-9218ee6a3b2bd82b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1198/format/webp" alt="img"></p>
+<p>id_rsa.pub</p>
+<p><strong>⑥将复制的内容粘进github</strong></p>
+<p>有些网页看不懂可以全页翻译</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-31872c2efd264fb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>配置1</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-157568471846db81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>配置2</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-9ddd7f5b656f9f9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>配置3</p>
+<p>前面加 $ 的都是在 git bash 里面 运行的，不要把 黑窗口和 git bash 搞混淆了</p>
+<p><strong>⑦测试是否成功</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，然后会看到：</p>
+<blockquote>
+<p>Hi ***! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</blockquote>
+<p>看到这个信息说明SSH已配置成功！</p>
+<p>此时你还需要配置：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"***"</span><span class="comment">// 你的github用户名，非昵称</span></span><br><span class="line">$ git config --global user.email  <span class="string">"xxx@qq.com"</span><span class="comment">// 填写你的github注册邮箱</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三、-初始化工程"><a href="#三、-初始化工程" class="headerlink" title="三、 初始化工程"></a>三、 初始化工程</h3><h4 id="3-1-全局安装hexo"><a href="#3-1-全局安装hexo" class="headerlink" title="3.1 全局安装hexo"></a>3.1 全局安装hexo</h4><p><strong>① 全局安装hexo</strong></p>
+<p>打开终端输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<p><strong>②创建hexo项目</strong></p>
+<p>在你认为合适的地方新建文件夹，我将其放在d盘新建文件夹命名为hexo</p>
+<p>终端切换到这个目录，执行以下命令为：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cd d:/hexo  <span class="comment">// 这个命令表示终端切换到d盘hexo目录下</span></span><br><span class="line">$ hexo <span class="keyword">init</span> blog  <span class="comment">// 初始化项目 项目名称为blog 这个过程可能会花费一些时间</span></span><br><span class="line">$ cd blog   <span class="comment">// 切换到blog目录下</span></span><br><span class="line">$ npm install   <span class="comment">// 这一步是安装所需的依赖</span></span><br><span class="line">$ hexo g # 或者hexo generate  <span class="comment">//生成静态文件</span></span><br><span class="line">$ hexo s # 或者hexo server    <span class="comment">//然后就可以在浏览器输入http://localhost:4000/ 就可以在本地查看初始化的项目了</span></span><br></pre></td></tr></table></figure>
+
+<p>目录长这个样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+
+<p>(1)  界面出不来的话可以试一试  <a href="http://localhost:4000//" target="_blank" rel="noopener">http://localhost:4000//</a></p>
+<p>(2) 换一个 端口号  hexo server -p 5000</p>
+<p>界面长这个样子：</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-16c4570d693d9b37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>初始化界面</p>
+<h4 id="3-2-下载并安装主题"><a href="#3-2-下载并安装主题" class="headerlink" title="3.2 下载并安装主题"></a>3.2 下载并安装主题</h4><p>一般应该很少人直接使用默认的主题吧，毕竟不是很好看。</p>
+<p>我用的主题叫做<code>anisina</code>，因为作者的文档确实写的不太全，所以当时研究主题反而花了很多时间。</p>
+<p>我就在这里详细介绍一下我用的主题咋配的吧，大家可以上网搜hexo主题 应该可以找到很多，挑自己喜欢的就行 最好是好看文档又全的，可以省很多事情。</p>
+<p>*<em>①下载主题(<a href="https://hexo.io/themes/" target="_blank" rel="noopener">更多主题下载处</a>) *</em></p>
+<p>打开终端在d:/hexo/bolg/themes目录下，输入如下命令下载主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/Haojen/hexo-theme-Anisina.git</span><br></pre></td></tr></table></figure>
+
+<p><strong>②配置主题 (<a href="http://haojen.github.io/2017/05/09/Anisina-中文使用教程/" target="_blank" rel="noopener">作者提供的api文档</a>)</strong></p>
+<p>打开hexo/blog/_config.yml 文件</p>
+<p>修改<code>themes: Anisina</code></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/6338511-a61f568d2e9bbee9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>修改主题</p>
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Shun
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>Clang Shun的博客，学习只要够专一、努力，那么一定会成功</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/11/28/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91Centos%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2mysql%E6%95%B0%E6%8D%AE%E5%BA%93/">在阿里云Centos云服务器上部署mysql数据库</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/08/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B3%A8%E5%86%8C%E6%95%B4%E4%BD%93%E8%BF%87%E7%A8%8B/">微信小程序-注册整体过程</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E4%BB%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E7%9A%84openid/">微信小程序获取用户信息以及用户的openid</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">微信小程序代码规范</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/12/09/flask-socketio/">flask-socketio</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/19/CentOS%207%20%E5%AE%89%E8%A3%85%20python3%20v1.1/">CentOS 7 安装 python3 v1.1</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/05/26/supervisor%E4%BB%8B%E7%BB%8D/">supervisor介绍</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/04/19/%E9%80%89%E6%8B%A9%E5%9C%A8Linux%E4%B8%8B%E5%AE%89%E8%A3%85redis/">选择在Linux下安装redis</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/04/19/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">使用Hexo搭建自己的个人博客</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/04/11/rabbitmq%E5%8E%9F%E7%90%86%E5%8F%8A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">rabbitmq原理及基础概念</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/19/CentOS%207%20%E5%AE%89%E8%A3%85%20python3%20v1.1/">CentOS 7 安装 python3 v1.1</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/08/21/git%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">git服务搭建</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/05/29/git%20bush%20%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E9%A1%B9%E7%9B%AE%E6%93%8D%E4%BD%9C/">git bush 中的一些项目操作</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/05/26/supervisor%E4%BB%8B%E7%BB%8D/">supervisor介绍</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E4%BB%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E7%9A%84openid/">微信小程序获取用户信息以及用户的openid</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">微信小程序代码规范</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/04/19/%E9%80%89%E6%8B%A9%E5%9C%A8Linux%E4%B8%8B%E5%AE%89%E8%A3%85redis/">选择在Linux下安装redis</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/11/05/%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/">生成随机字符串</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/04/11/rabbitmq%E5%8E%9F%E7%90%86%E5%8F%8A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">rabbitmq原理及基础概念</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/09/25/python%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">python开发规范</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2018/04/19/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/04/19/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/04/19/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 Shun Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '9'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>
